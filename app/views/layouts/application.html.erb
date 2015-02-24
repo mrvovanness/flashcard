@@ -2,11 +2,11 @@
 <head>
   <title>Флэшкарточкер</title>
   <%= stylesheet_link_tag 'application' %>
+  <%= javascript_include_tag 'application' %>
 </head>
 
 <body>
   <section id="container">
-
     <header class="clearfix">
       <h1>Флэшкарточкер</h1>
       <ul class="navigation-links">
@@ -14,13 +14,7 @@
         <li><a href="#">Добавить карточку</a></li>
       </ul>
     </header>
-
-    <section>
-      <p style="font-size: 22px;">
-        Первый в мире удобный менеджер флеш-карточек. Именно так.
-      </p>
-    </section>
-
+      <%= yield %>
   </section>
 </body>
 </html>
