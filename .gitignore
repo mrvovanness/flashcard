@@ -16,7 +16,6 @@
 !/log/.keep
 
 # Ignore database.yml
-config/database.yml
-
-tmp/*
-public/assets
+config/databade.yml
+/tmp/*
+/public/assets
