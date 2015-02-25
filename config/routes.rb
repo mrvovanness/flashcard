@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   
   resources :cards
 
-  get "home" => "home#index"
   root 'home#index'
 
   # Example of regular route:
