@@ -1,0 +1,14 @@
+<h1>All cards listing</h1>
+
+<ol>
+  <% @cards.each do |card| %>
+    <li>
+      <b>origin</b>
+      <%= card.original_text %><br>
+      <b>translation</b>
+      <%= card.translated_text %><br>
+      <b>revision</b>
+      <%= card.review_date %><br>
+    </li>
+  <% end %>
+</ol>
