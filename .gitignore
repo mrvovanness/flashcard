@@ -12,6 +12,7 @@
 /log/*
 !/log/.keep
 
-/config/databade.yml
 /tmp/*
 /public/assets
+/*.swp
+/config/database.yml
