@@ -1,0 +1,17 @@
+    <%= simple_form_for @card do |f| %>
+        <div class="col-md-6">
+      <% if @card.errors.any? %>
+          <b>
+            Не могу сохранить запись:
+          </b><br>
+          <% else %>
+            <b>Добавьте запись</b>
+          </ul><br>
+        <% end %><br>
+
+        <%= f.input :original_text, label: false, placeholder: 'Введите слово или фразу' %> 
+        <%= f.input :translated_text, label: false, placeholder: 'Введите перевод' %>
+        <%= f.button :submit, label: 'Сохранить' %>
+    <% end %>
+  </div>
+ 

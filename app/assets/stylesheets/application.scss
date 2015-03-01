@@ -17,36 +17,32 @@
 
 b {color: #ff0000;}
 
-#container {
-  margin: 48px auto;
-  width: 960px;
+th { border-bottom: solid black;}
 
+th, td {
+  font-size: 16px;
+  padding-right: 15px;
+  padding-left: 5px;
+}
+
+#main-container {
+  margin: 20px auto;
+  width: 660px;
+  border: solid #DDD1D1; 
+  
   section {
     clear: both;
 
     p {
-      font-size: 22px;
-    }
-  }
-
-  header {
-    margin-bottom: 56px;
-  
-    h1 {
-      float: left;
-      margin: 10;
+      font-size: 20px;
     }
   }
 }
-.navigation-links {
-  float: right;
 
-  li {
-    display: inline-block;
-    margin: 0 16px;
-  }
+.container {
+  margin: 20px auto;
+  width: 660px;
 }
-
 /* MISC */
 
 .clearfix:after {content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0;} html[xmlns].clearfix{display:block;} * html .clearfix{height:1%;}

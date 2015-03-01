@@ -6,15 +6,23 @@
 </head>
 
 <body>
-  <section id="container">
-    <header class="clearfix">
-      <h1>Флэшкарточкер</h1>
-      <ul class="navigation-links">
-        <li><%= link_to 'Все карточки', cards_path %></li>
-        <li><a href="#">Добавить карточку</a></li>
-      </ul>
-    </header>
-      <%=yield%>
+  <section id="main-container">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <h1 class="navbar-brand">Флэшкарточкер</h1>
+        </div>
+          <ul class="nav navbar-right">
+            <li>
+              <%= link_to 'Все карточки', cards_path %>
+            </li>
+            <li>
+              <%= link_to 'Добавить карточку', new_card_path %>
+            </li>
+          </ul>
+      </div>
+    </nav>
+    <%=yield%>
   </section>
 </body>
 </html>

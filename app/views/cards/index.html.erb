@@ -1,14 +1,20 @@
-<h1>All cards listing</h1>
-
-<ol>
+<table>
+  <tr>
+    <th>Оригинал</th>
+    <th>Перевод</th>
+    <th>Дата пересмотра</th>
+    <th colspan="2"></th>
+  </tr>
   <% @cards.each do |card| %>
-    <li>
-      <b>origin</b>
-      <%= card.original_text %><br>
-      <b>translation</b>
-      <%= card.translated_text %><br>
-      <b>revision</b>
-      <%= card.review_date %><br>
-    </li>
+    <tr>
+      <td><%= card.original_text %></td>
+        <td><%= card.translated_text %></td>
+        <td><%= card.review_date %></td>
+        <td><%= link_to 'Показать', card_path(card) %></td>
+        <td><%= link_to 'Поменять', edit_card_path(card) %></td>
+        <td><%= link_to 'Сжечь', card_path(card), 
+          method: :delete, 
+          data: { confirm: 'Уверен?' } %></td>
+    </tr>
   <% end %>
-</ol>
+</table>
