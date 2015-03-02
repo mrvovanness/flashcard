@@ -1,4 +1,8 @@
 class Card < ActiveRecord::Base
+  before_validation do
+    shift_date
+  end
+  
   validates :original_text, :translated_text, :review_date, presence: true
 
   validate :the_text_cannot_be_the_same
@@ -9,7 +13,7 @@ class Card < ActiveRecord::Base
     end
   end
 
-  before_validation do
+  def shift_date
     self.review_date = Date.today + 3.days
   end
 end
