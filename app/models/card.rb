@@ -1,7 +1,5 @@
 class Card < ActiveRecord::Base
-  before_validation do
-    shift_date
-  end
+  before_validation :shift_date
   
   validates :original_text, :translated_text, :review_date, presence: true
 
