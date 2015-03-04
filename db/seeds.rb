@@ -10,5 +10,5 @@ require 'open-uri'
 doc = Nokogiri::HTML(open("http://www.spanishdict.com/blog/6/top-100-spanish-words-people-really-want-to-know"))
 
 doc.xpath('//tr')[1..100].each do |x|
-  Card.create(original_text: x.css('td')[0].text.gsub(/\d../, ' ').strip, translated_text: x.css('td')[1].text.gsub(/\d../, ' ').strip)
+  Card.create(original_text: x.css('td')[0].text.sub(/\d{1,}\./, '').strip, translated_text: x.css('td')[1].text.sub(/\d{1,}\./, '').strip)
 end
