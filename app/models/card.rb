@@ -14,4 +14,10 @@ class Card < ActiveRecord::Base
   def shift_date
     self.review_date = Date.today + 3.days
   end
+
+  def check(original_text)
+    original_text == self.original_text
+  end
+  
+  scope :review_cards, -> { where('review_date <=?', Date.today) }
 end
