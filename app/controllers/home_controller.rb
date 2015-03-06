@@ -10,6 +10,6 @@ class HomeController < ApplicationController
     else
       flash[:warning] = "Неправильно"
     end
-      redirect_to root_path
+    redirect_to root_path
   end
 end
