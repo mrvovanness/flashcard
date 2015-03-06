@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   
-  resources :cards
-
   root 'home#index'
   get '/success' => 'home#success'
   get '/error' => 'home#error'
-  post '/' => 'home#checking'
-  post '/error' => 'home#checking'
-  post '/success' => 'home#checking'
+  post '/' => 'home#check_card'
+  post '/error' => 'home#check_card'
+  post '/success' => 'home#check_card'
+  put '/' => 'home#check_card'
+  patch '/' => 'home#check_card'
+  resources :cards
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

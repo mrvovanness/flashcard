@@ -1,27 +1,24 @@
 class HomeController < ApplicationController
-  before_action :card_sample, only: [:index, :success, :error]
   
   def index
+    @card = Card.review_cards.sample
   end
 
-  def checking
+  def check_card
     @card = Card.find(params[:id])
-    if @card.check(params[:original_text]) == true
-      @card.update(params.permit(:original_text, :translated_text))
-      redirect_to '/success'
+    if @card.check_translation(params[:original_text]) == true
+      @card.update(card_params)
+      flash[:success] = "Правильно"
+      redirect_to root_path
     else
-      redirect_to '/error'
+      flash[:error] = "Неправильно"
+      redirect_to root_path
     end
-  end
- 
-  def success
-  end
-
-  def error
   end
 
   private
-  def card_sample
-    @card = Card.review_cards.sample
+
+  def card_params
+    params.permit(:original_text, :translated_text)
   end
 end
