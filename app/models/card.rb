@@ -5,6 +5,8 @@ class Card < ActiveRecord::Base
 
   validate :the_text_cannot_be_the_same
 
+  scope :pending, -> { where('review_date >=?', Date.today) }
+
   def the_text_cannot_be_the_same
     if original_text == translated_text
       errors.add(:translated_text, "не похоже на перевод")
@@ -15,9 +17,9 @@ class Card < ActiveRecord::Base
     self.review_date = Date.today + 3.days
   end
 
-  def check_translation(original_text)
-    original_text == self.original_text
+  def check_translation(user_translation)
+    if user_translation == self.original_text
+      self.update_column(:review_date, shift_date)
+    end
   end
-  
-  scope :pending, -> { where('review_date <=?', Date.today) }
 end

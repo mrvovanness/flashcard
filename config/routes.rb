@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   root 'home#index'
-  post '/' => 'home#check_card'
+  put 'check' => 'home#check_card'
   resources :cards
   
   # Example of regular route:

@@ -1,24 +1,15 @@
 class HomeController < ApplicationController
-  
   def index
     @card = Card.pending.sample
   end
 
   def check_card
     @card = Card.find(params[:id])
-    if @card.check_translation(params[:original_text]) == true
-      @card.update(card_params)
+    if @card.check_translation(params[:original_text])
       flash[:success] = "Правильно"
-      redirect_to root_path
     else
-      flash[:error] = "Неправильно"
-      redirect_to root_path
+      flash[:warning] = "Неправильно"
     end
-  end
-
-  private
-
-  def card_params
-    params.permit(:original_text, :translated_text)
+      redirect_to root_path
   end
 end

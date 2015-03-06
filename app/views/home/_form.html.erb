@@ -1,22 +1,18 @@
 <div class="col-md-6">
-  <% if flash[:error] %>
-    <div class="alert alert-warning" role="alert">
-      <%= flash[:error] %>
-    </div>
-  <% elsif flash[:success] %>
-    <div class="alert alert-success" role="alert">
-      <%= flash[:success] %>
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>" role="alert">
+      <%= value %>
     </div>
   <% end %>
 
-  <% if @card == nil %>
-    <b>Нет карточек для проверки</b>
-  <% else %>
+  <% if @card.present? %>
     <h4><%= @card.translated_text %></h4>
-    <%= simple_form_for root_path do |f| %>
+    <%= form_tag check_path, method: :put do %>
       <%= hidden_field_tag :id, @card.id %>
       <%= text_field_tag :original_text, nil, placeholder: 'Введите перевод' %>
-      <%= f.button :submit, 'Проверить' %>
+      <button>Проверить</button>
     <% end %>
+  <% else %>
+    <b>Нет карточек для проверки</b>
   <% end %>
 </div>
