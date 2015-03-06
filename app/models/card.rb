@@ -19,5 +19,5 @@ class Card < ActiveRecord::Base
     original_text == self.original_text
   end
   
-  scope :review_cards, -> { where('review_date >=?', Date.today) }
+  scope :pending, -> { where('review_date <=?', Date.today) }
 end

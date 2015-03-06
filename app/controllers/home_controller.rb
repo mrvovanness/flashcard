@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   
   def index
-    @card = Card.review_cards.sample
+    @card = Card.pending.sample
   end
 
   def check_card

@@ -1,13 +1,7 @@
 Rails.application.routes.draw do
   
   root 'home#index'
-  get '/success' => 'home#success'
-  get '/error' => 'home#error'
   post '/' => 'home#check_card'
-  post '/error' => 'home#check_card'
-  post '/success' => 'home#check_card'
-  put '/' => 'home#check_card'
-  patch '/' => 'home#check_card'
   resources :cards
   
   # Example of regular route:

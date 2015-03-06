@@ -13,8 +13,8 @@
     <b>Нет карточек для проверки</b>
   <% else %>
     <h4><%= @card.translated_text %></h4>
-    <%= simple_form_for error_path do |f| %>
-      <%= hidden_field_tag 'id', @card.id %>
+    <%= simple_form_for root_path do |f| %>
+      <%= hidden_field_tag :id, @card.id %>
       <%= text_field_tag :original_text, nil, placeholder: 'Введите перевод' %>
       <%= f.button :submit, 'Проверить' %>
     <% end %>
