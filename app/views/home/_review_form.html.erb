@@ -5,10 +5,10 @@
     </div>
   <% end %>
 
-  <% if @card.present? %>
-    <h4><%= @card.translated_text %></h4>
+  <% if card.present? %>
+    <h4><%= card.translated_text %></h4>
     <%= form_tag check_path, method: :put do %>
-      <%= hidden_field_tag :id, @card.id %>
+      <%= hidden_field_tag :id, card.id %>
       <%= text_field_tag :original_text, nil, placeholder: 'Введите перевод' %>
       <button>Проверить</button>
     <% end %>

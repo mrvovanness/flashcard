@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @card = Card.pending.sample
+    @card = Card.pending.order("RANDOM()").first
   end
 
   def check_card
