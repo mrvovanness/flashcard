@@ -19,7 +19,7 @@ class Card < ActiveRecord::Base
 
   def check_translation(user_translation)
     if user_translation == original_text
-      self.update_attributes(review_date: Date.today + 3.days)
+      update_attributes(review_date: Date.today + 3.days)
     end
   end
 end
