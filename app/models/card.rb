@@ -5,7 +5,7 @@ class Card < ActiveRecord::Base
 
   validate :the_text_cannot_be_the_same
 
-  scope :pending, -> { where('review_date <=?', Date.today) }
+  scope :pending, -> { where('review_date <=?', Date.today).order("RANDOM()") }
 
   def the_text_cannot_be_the_same
     if original_text == translated_text
@@ -18,8 +18,8 @@ class Card < ActiveRecord::Base
   end
 
   def check_translation(user_translation)
-    if user_translation == self.original_text
-      self.update_attribute(:review_date, Date.today + 3.days)
+    if user_translation == original_text
+      self.update_attributes(review_date: Date.today + 3.days)
     end
   end
 end

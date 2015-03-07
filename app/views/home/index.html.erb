@@ -4,6 +4,25 @@
       Первый в мире удобный менеджер флеш-карточек. Именно так.
     </h3>
   </div><br>
-  <%= render 'review_form', card: @card %>
+
+  <div class="col-md-6">
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>" role="alert">
+        <%= value %>
+      </div>
+    <% end %>
+    
+    <% if @card.present? %>
+      <h4><%= @card.translated_text %></h4>
+      <%= form_tag check_path, method: :put do %>
+        <%= hidden_field_tag :card_id, @card.id %>
+        <%= text_field_tag :original_text, nil, placeholder: 'Введите перевод' %>
+        <button>Проверить</button>
+      <% end %>
+      <% else %>
+        <b>Нет карточек для проверки</b>
+      <% end %>
+    </div>
+  </div>
 </div>
 
