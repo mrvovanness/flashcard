@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   
-  resources :cards
-
   root 'home#index'
-
+  put 'check' => 'home#check_card'
+  resources :cards
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
