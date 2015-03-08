@@ -4,8 +4,8 @@ class HomeController < ApplicationController
   end
 
   def check_card
-    @card = Card.find(check_params)
-    if @card.check_translation(params[:original_text])
+    @card = Card.find(check_params[:card_id])
+    if @card.check_translation(check_params[:user_translation])
       flash[:success] = "Правильно"
     else
       flash[:warning] = "Неправильно! Правильный ответ был #{@card.original_text}"
@@ -16,6 +16,6 @@ class HomeController < ApplicationController
   private
 
   def check_params
-    params.require(:card_id)
+    params.permit(:card_id, :user_translation)
   end
 end
