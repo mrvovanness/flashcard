@@ -48,3 +48,5 @@ end
 
 gem 'simple_form'
 gem 'nokogiri'
+gem 'capybara'
+gem 'factory_girl'
