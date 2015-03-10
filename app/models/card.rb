@@ -20,6 +20,8 @@ class Card < ActiveRecord::Base
   def check_translation(user_translation)
     if user_translation.mb_chars.downcase.strip == original_text.mb_chars.downcase.strip
       update_attributes(review_date: Date.today + 3.days)
+    else
+      return false
     end
   end
 end
