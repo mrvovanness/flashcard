@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Card, :type => :model do
+describe Card do
   it "check matching words" do
     card = Card.create(original_text: "feature", translated_text: "фишка")
     expect(card.check_translation("feature")).to be true
@@ -32,11 +32,8 @@ RSpec.describe Card, :type => :model do
   end
 
   it "change cards number after success reviewing" do
-    a = Card.pending.all.count
-    succ_card = Card.pending.first
-    succ_card.check_translation(succ_card.original_text)
-    b = Card.pending.all.count
-    expect( a == b ).to be false
+    a = Card.pending.first
+    expect{a.check_translation(a.original_text)}.to change{Card.pending.count}.by(-1)
   end
 end
 
