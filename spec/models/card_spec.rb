@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 describe Card do
+  let! (:card) { create(:card) }
+  before do
+    card = create(:card)
+  end
+
   it "check matching words" do
     card = Card.create(original_text: "feature", translated_text: "фишка")
     expect(card.check_translation("feature")).to be true
