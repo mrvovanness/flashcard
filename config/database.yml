@@ -1,0 +1,12 @@
+development:
+  adapter: postgresql
+  database: flashcard_development 
+  username: mrvovanness 
+  password: 1111
+ 
+test:
+  adapter: postgresql
+  database: flashcard_test 
+  username: mrvovanness 
+  password: 1111
+
