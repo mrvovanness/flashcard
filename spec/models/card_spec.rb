@@ -39,7 +39,7 @@ describe Card do
 
     it "change cards number after success reviewing" do
       succ_card = Card.pending.first
-      expect{ succ_card.check_translation(succ_card.original_text) }.to change{ Card.pending.count }.by(-1)
+      expect { succ_card.check_translation(succ_card.original_text) }.to change { Card.pending.count }.by(-1)
     end
   end
 end
