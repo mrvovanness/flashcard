@@ -3,7 +3,6 @@ require 'rails_helper'
 describe 'filling the form' do
   let!(:card) { create(:card) }
   before do
-    create(:card)
     card.update_attribute(:review_date, Date.today - 1.day)
     visit root_path
   end

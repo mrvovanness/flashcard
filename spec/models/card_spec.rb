@@ -3,7 +3,6 @@ require 'rails_helper'
 describe Card do
   let! (:card) { create(:card) }
   before do
-    create(:card)
     card.update_attribute(:review_date, Date.today - 1.day)
   end
 
