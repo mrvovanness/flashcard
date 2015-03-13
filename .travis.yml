@@ -1,0 +1,10 @@
+language: ruby
+rvm:
+  - 2.1.0
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
+  - psql -U postgres -c "create extension postgis"
+# uncomment this line if your project needs to run something other than `rake`:
+# # script: bundle exec rspec spec
+#
