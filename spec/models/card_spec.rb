@@ -3,7 +3,8 @@ require 'rails_helper'
 describe Card do
   let! (:card) { create(:card) }
   before do
-    card = create(:card)
+    create(:card)
+    card.update_attribute(:review_date, Date.today - 1.day)
   end
 
   it "check matching words" do
