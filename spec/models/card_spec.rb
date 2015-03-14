@@ -24,6 +24,11 @@ describe Card do
     expect(card.errors.any?).to be false
   end
 
+  it "don't pass equal words" do
+    card = Card.create(original_text: "Fall", translated_text: "Fall")
+  expect(card.errors.any?).to be true
+  end
+
   context "deals with updating attributes" do
     before do
       card.update_attribute(:review_date, Date.today - 1.day)
@@ -35,8 +40,4 @@ describe Card do
     end
   end
 
-   it "don't pass equal words" do
-    card = Card.create(original_text: "Fall", translated_text: "Fall")
-    expect(card.errors.any?).to be true
-  end
 end
