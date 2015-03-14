@@ -26,7 +26,7 @@ describe Card do
 
   it "don't pass equal words" do
     card = Card.create(original_text: "Fall", translated_text: "Fall")
-  expect(card.errors.any?).to be true
+    expect(card.errors.any?).to be true
   end
 
   context "deals with updating attributes" do
@@ -39,5 +39,4 @@ describe Card do
       expect { succ_card.check_translation(succ_card.original_text) }.to change { Card.pending.count }.by(-1)
     end
   end
-
 end
