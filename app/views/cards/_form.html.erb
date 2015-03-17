@@ -12,7 +12,6 @@
 
     <%= f.input :original_text, label: false, placeholder: 'Введите слово или фразу' %> 
     <%= f.input :translated_text, label: false, placeholder: 'Введите перевод' %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.button :submit, "Сохранить" %>
   <% end %>
 </div>

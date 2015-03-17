@@ -1,9 +1,11 @@
-<section class="row">
-  <div class="col-md-6">
-    <%= form_tag user_sessions_path do %>
-      <%= text_field_tag :email %><br>
-      <%= password_field_tag :password %><br>
-      <%= submit_tag "Зайти" %><br>
-    <% end %>
-  </div>
-</section>
+<div class="container">
+  <section class="row">
+    <div class="col-md-6">
+      <%= form_tag user_sessions_path do %>
+        <%= text_field_tag :email %><br>
+        <%= password_field_tag :password %><br>
+        <%= submit_tag "Зайти" %><br>
+      <% end %>
+    </div>
+  </section>
+</div>

@@ -18,6 +18,6 @@ class UserSessionsController < ApplicationController
   def destroy
     logout
     flash[:info] = "Вы вышли!"
-    render 'user_sessions/new'
+    redirect_to login_path
   end
 end

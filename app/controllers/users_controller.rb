@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:index, :new, :create]
-  before_action :find_user, only: [:edit, :update]
 
   def new
     @user = User.new
@@ -19,10 +18,11 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = current_user
   end
 
   def update
-    if @user.update_attributes(user_params)
+    if current_user.update_attributes(user_params)
       flash[:success] = "Вы изменили свои данные"
       redirect_to root_path
     else
@@ -35,9 +35,5 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
-  end
-
-  def find_user
-    @user = current_user
   end
 end
