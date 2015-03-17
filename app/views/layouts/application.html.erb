@@ -10,11 +10,11 @@
   <section id="main-container">
     <div class="row">
       <% if current_user %>
-        <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
-        <%= link_to "Logout", :logout, method: :post %>
+        <%= link_to "Настройки профиля", edit_user_path(current_user.id) %>
+        <%= link_to "Выйти", :logout, method: :post %>
       <% else %>
-        <%= link_to "Register", new_user_path %>
-        <%= link_to "Login", :login %>
+        <%= link_to "Стать участником", new_user_path %>
+        <%= link_to "Зайти", :login %>
       <% end %>
     </div>
     <nav class="navbar navbar-default">

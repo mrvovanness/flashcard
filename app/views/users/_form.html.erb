@@ -1,8 +1,8 @@
 <div class="col-md-6">
-<%= form_for user do |f| %>
-  <%= f.text_field :email %>
-  <%= f.password_field :password %> 
-  <%= f.password_field :password_confirmation %>
-  <%= f.submit %>
-<% end %>
+  <%= simple_form_for user do |f| %>
+    <%= f.text_field :email, label: false, placeholder: 'Эл. почта' %><br>
+    <%= f.password_field :password , label: false, placeholder: 'Пароль'%><br>
+    <%= f.password_field :password_confirmation, label: false, placeholder: 'Еще раз пароль' %><br>
+    <%= f.button :submit, 'Сохранить' %><br>
+  <% end %>
 </div>

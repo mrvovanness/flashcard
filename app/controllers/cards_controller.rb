@@ -1,7 +1,7 @@
 class CardsController < ApplicationController
   before_action :find_card, only:  [:show, :edit, :update, :destroy]
   def index
-    @cards = Card.all
+    @cards = current_user.cards.all
   end
 
   def show
@@ -39,10 +39,10 @@ class CardsController < ApplicationController
   private
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text)
+    params.require(:card).permit(:original_text, :translated_text, :user_id)
   end
 
   def find_card
-    @card = Card.find(params[:id])
+    @card = current_user.cards.find(params[:id])
   end
 end
