@@ -11,7 +11,7 @@ class UserSessionsController < ApplicationController
       redirect_to root_path
     else
       flash[:danger] = "Попробуй еще раз или зарегистируйся!"
-      render 'new'
+      render "new"
     end
   end
 

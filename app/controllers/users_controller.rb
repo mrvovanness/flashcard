@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       flash[:warning] = "Вы не зарегистрированы, попробуйте еще раз"
-      render 'new'
+      render "new"
     end
   end
 
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       flash[:warning] = "Данные не обновлены!"
-      render 'edit'
+      render "edit"
     end
   end
 

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :cards, :users, :user_sessions
   
   get 'login' => 'user_sessions#new', :as => :login
+  get 'signup' => 'users#new', :as => :signup
   post 'logout' => 'user_sessions#destroy', :as => :logout
 
   # Example of regular route:
