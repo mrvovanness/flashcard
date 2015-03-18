@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @card = Card.pending.first
+    @card = current_user.cards.pending.first
   end
 
   def check_card

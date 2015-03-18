@@ -49,4 +49,4 @@ end
 
 gem 'simple_form'
 gem 'nokogiri'
-
+gem 'sorcery'

@@ -1,10 +1,12 @@
+require 'support/login_helper'
 require 'rails_helper'
 
 describe 'filling the form' do
+  let!(:user) { create(:user) }
   let!(:card) { create(:card) }
-  before do
+  before(:each) do
     card.update_attribute(:review_date, Date.today - 1.day)
-    visit root_path
+    login("ex@mail.com", "1111")
   end
 
   it "opens success flash if match" do

@@ -1,1 +1,1 @@
-[![Build Status](https://travis-ci.org/mrvovanness/flashcard.svg?branch=seventh-task)](https://travis-ci.org/mrvovanness/flashcard)
+[[![Build Status](https://travis-ci.org/mrvovanness/flashcard.svg?branch=master)](https://travis-ci.org/mrvovanness/flashcard)
