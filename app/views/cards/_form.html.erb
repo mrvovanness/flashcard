@@ -1,5 +1,5 @@
 <div class="col-md-6">
-  <%= simple_form_for card, :html => {:multipart => true} do |f| %>
+  <%= simple_form_for card, html: { multipart: true } do |f| %>
     <% if card.errors.any? %>
       <b>
         Не могу сохранить запись:
@@ -12,12 +12,16 @@
 
     <%= f.input :original_text, label: false, placeholder: "Введите слово или фразу" %> 
     <%= f.input :translated_text, label: false, placeholder: "Введите перевод" %>
+    <% if card.card_pic? %>
+      <%= image_tag card.card_pic_url(:thumb) %><br>
+      <%= f.check_box :remove_card_pic %>
+      <b>Удалить картинку</b><br>
+    <% end %>
     <label>Загрузите картинку к карточке(не обязательно)</label>
-    <%= f.file_field :card_pic %><br>
+   <%= f.file_field :card_pic %><br>
     <%= f.hidden_field :card_pic_cache %>
     <label>Можно добавить картинку из Интернета</label>
     <%= f.input :remote_card_pic_url, label: false, placeholder: "Вставьте ссылку" %>
-    <%= image_tag(card.card_pic_url) if card.card_pic? %><br>
     <%= f.button :submit, "Сохранить" %>
   <% end %>
 </div>
