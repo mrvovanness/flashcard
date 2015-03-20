@@ -12,16 +12,16 @@
 
     <%= f.input :original_text, label: false, placeholder: "Введите слово или фразу" %> 
     <%= f.input :translated_text, label: false, placeholder: "Введите перевод" %>
-    <% if card.card_pic? %>
-      <%= image_tag card.card_pic_url(:thumb) %><br>
-      <%= f.check_box :remove_card_pic %>
+    <% if card.card_picture? %>
+      <%= image_tag card.card_picture_url(:thumb) %><br>
+      <%= f.check_box :remove_card_picture %>
       <b>Удалить картинку</b><br>
     <% end %>
     <label>Загрузите картинку к карточке(не обязательно)</label>
-   <%= f.file_field :card_pic %><br>
-    <%= f.hidden_field :card_pic_cache %>
+   <%= f.file_field :card_picture %><br>
+    <%= f.hidden_field :card_picture_cache %>
     <label>Можно добавить картинку из Интернета</label>
-    <%= f.input :remote_card_pic_url, label: false, placeholder: "Вставьте ссылку" %>
+    <%= f.input :remote_card_picture_url, label: false, placeholder: "Вставьте ссылку" %>
     <%= f.button :submit, "Сохранить" %>
   <% end %>
 </div>

@@ -1,6 +1,6 @@
 class Card < ActiveRecord::Base
   belongs_to :user
-  mount_uploader :card_pic, CardPicUploader
+  mount_uploader :card_picture, CardPictureUploader
 
   before_validation :shift_date
   

@@ -15,7 +15,7 @@
   </section>
   <section class="row">
     <div class="col-md-6">
-      <%= image_tag @card.card_pic_url(:thumb) if @card.card_pic? %>
+      <%= image_tag @card.card_picture_url(:thumb) if @card.card_picture? %>
       <%= link_to "Редактировать", edit_card_path(@card.id) %>
     </div>
   </section>

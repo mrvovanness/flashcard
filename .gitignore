@@ -16,4 +16,5 @@
 /public/assets
 !/*.swp
 /config/database.yml
-/public/*
+/public/images/*
+/public/uploads/*

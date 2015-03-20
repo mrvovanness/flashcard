@@ -3,8 +3,8 @@
     <h3> 
       Первый в мире удобный менеджер флеш-карточек. Именно так.
     </h3>
-    <% if @card.present? %>
-      <%= image_tag @card.card_pic_url %>
+    <% if @card.card_picture? %>
+      <%= image_tag @card.card_picture_url %>
     <% end %>
   </div><br>
   <div class="col-md-6">
