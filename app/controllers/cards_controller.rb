@@ -17,16 +17,20 @@ class CardsController < ApplicationController
   def create
     @card = current_user.cards.new(card_params)
     if @card.save
+      flash[:info] = "Ты создал новую карточку"
       redirect_to @card
     else
+      flash[:danger] = "Что-то пошло не так. Попробуй еще раз!"
       render 'new'
     end
   end
 
   def update
     if @card.update(card_params)
+      flash[:info] = "Ты обновил карточку"
       redirect_to @card
     else
+      flash[:danger] = "Что-то пошло не так. Попробуй еще раз!"
       render 'edit'
     end
   end

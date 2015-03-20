@@ -9,7 +9,7 @@ class CardPictureUploader < CarrierWave::Uploader::Base
   process resize_to_fill: [360, 360]
 
   version :thumb do
-    process resize_to_fill: [100, 100]
+    process resize_to_fill: [175, 175]
   end
 
   def extension_white_list
