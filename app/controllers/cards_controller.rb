@@ -43,7 +43,7 @@ class CardsController < ApplicationController
   private
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :card_picture, :card_picture_cache, :remote_card_picture_url, :remove_card_picture)
+    params.require(:card).permit(:original_text, :translated_text, :visual, :visual_cache, :remote_visual_url, :remove_visual)
   end
 
   def find_card

@@ -35,6 +35,13 @@ b {color: #ff0000;}
   margin: 20px auto;
   width: 780px;
 }
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0px auto;
+}
+    
 /* MISC */
 
 .clearfix:after {content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0;} html[xmlns].clearfix{display:block;}

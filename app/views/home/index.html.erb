@@ -11,10 +11,10 @@
         <%= hidden_field_tag :card_id, @card.id %>
         <%= text_field_tag :user_translation, nil, placeholder: 'Введите перевод', class: "form-control" %>
         <button class="btn btn-primary">Проверить</button><br><br>
-        <%= image_tag @card.card_picture_url, class: "img-rounded" %>
-      <% end %>
+        <%= image_tag @card.visual_url, class: "img-rounded" %><br>
+      <% end %><br>
     <% else %>
-      <b>Нет карточек для проверки</b>
+      <b>Нет карточек для проверки</b><br>
     <% end %>
   </div>
 </div>
