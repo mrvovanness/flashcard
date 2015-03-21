@@ -13,7 +13,7 @@
       <h4><%= @card.review_date %></h4>
     </div>
     <div class="col-md-3">
-      <%= image_tag @card.visual_url(:thumb), class: "img-circle" %><br>
+      <%= image_tag @card.picture_url(:thumb), class: "img-circle" %><br>
       <%= link_to "Редактировать", edit_card_path(@card.id) %>
     </div>
   </section>

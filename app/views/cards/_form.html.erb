@@ -4,15 +4,15 @@
     <%= f.input :translated_text, label: "Перевод", placeholder: "Введите перевод", input_html: { class: "form-control" } %>
   </div>
   <div class="col-md-6">
-    <% if card.visual? %>
-      <%= image_tag card.visual_url(:thumb), class: "img-thumbnail" %><br>
-      <%= f.check_box :remove_visual %>
+    <% if card.picture? %>
+      <%= image_tag card.picture_url(:thumb), class: "img-thumbnail" %><br>
+      <%= f.check_box :remove_picture %>
       <b>Удалить старую картинку</b><br>
     <% end %>
     <label>Загрузи картинку к карточке(не обязательно)</label>
-    <%= f.file_field :visual %><br>
-    <%= f.hidden_field :visual_cache %>
-    <%= f.input :remote_visual_url, label: "Можно добавить картинку из Интернета", placeholder: "Вставьте ссылку", input_html: { class: "form-control" } %><br>
+    <%= f.file_field :picture %><br>
+    <%= f.hidden_field :picture_cache %>
+    <%= f.input :remote_picture_url, label: "Можно добавить картинку из Интернета", placeholder: "Вставьте ссылку", input_html: { class: "form-control" } %><br>
     <%= f.button :submit, "Сохранить",  class: "btn-primary" %>
   </div>
 <% end %>
