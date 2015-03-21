@@ -16,3 +16,8 @@
 /public/assets
 !/*.swp
 /config/database.yml
+/public/images/*
+/public/uploads/*
+
+# Ignore application configuration
+/config/application.yml

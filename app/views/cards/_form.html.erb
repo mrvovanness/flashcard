@@ -1,18 +1,19 @@
-<div class="col-md-6">
-  <%= simple_form_for card do |f| %>
-    <% if card.errors.any? %>
-      <b>
-        Не могу сохранить запись:
-      </b><br>
-    <% else %>
-      <b>
-        Добавьте запись:
-      </b><br>
-    <% end %><br>
-
-    <%= f.input :original_text, label: false, placeholder: 'Введите слово или фразу' %> 
-    <%= f.input :translated_text, label: false, placeholder: 'Введите перевод' %>
-    <%= f.button :submit, "Сохранить" %>
-  <% end %>
-</div>
+<%= simple_form_for card, html: { multipart: true } do |f| %>
+  <div class="col-md-6">
+    <%= f.input :original_text, label: "Слово или текст", placeholder: "Введите слово или фразу", input_html: { class: "form-control" } %> 
+    <%= f.input :translated_text, label: "Перевод", placeholder: "Введите перевод", input_html: { class: "form-control" } %>
+  </div>
+  <div class="col-md-6">
+    <% if card.picture? %>
+      <%= image_tag card.picture_url(:thumb), class: "img-thumbnail" %><br>
+      <%= f.check_box :remove_picture %>
+      <b>Удалить старую картинку</b><br>
+    <% end %>
+    <label>Загрузи картинку к карточке(не обязательно)</label>
+    <%= f.file_field :picture %><br>
+    <%= f.hidden_field :picture_cache %>
+    <%= f.input :remote_picture_url, label: "Можно добавить картинку из Интернета", placeholder: "Вставьте ссылку", input_html: { class: "form-control" } %><br>
+    <%= f.button :submit, "Сохранить",  class: "btn-primary" %>
+  </div>
+<% end %>
  

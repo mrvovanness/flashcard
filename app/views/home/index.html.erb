@@ -1,20 +1,20 @@
 <div class="row">
   <div class="col-md-6">
-    <h3> 
+    <h3 class="text-center"> 
       Первый в мире удобный менеджер флеш-карточек. Именно так.
     </h3>
-  </div><br>
+  </div>
   <div class="col-md-6">
     <% if @card.present? %>
-      <h4><%= @card.translated_text %></h4>
-      <%= form_tag check_path, method: :put do %>
+      <h4><p class="bg-danger"><%= @card.translated_text %></p></h4>
+      <%= form_tag check_path, method: :put, class: "form-inline" do %>
         <%= hidden_field_tag :card_id, @card.id %>
-        <%= text_field_tag :user_translation, nil, placeholder: 'Введите перевод' %>
-        <button>Проверить</button>
-      <% end %>
+        <%= text_field_tag :user_translation, nil, placeholder: 'Введите перевод', class: "form-control" %>
+        <button class="btn btn-primary">Проверить</button><br><br>
+        <%= image_tag @card.picture_url, class: "img-rounded" %><br>
+      <% end %><br>
     <% else %>
-      <b>Нет карточек для проверки</b>
+      <b>Нет карточек для проверки</b><br>
     <% end %>
   </div>
 </div>
-
