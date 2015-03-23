@@ -2,6 +2,7 @@
   <div class="col-md-6">
     <%= f.input :original_text, label: "Слово или текст", placeholder: "Введите слово или фразу", input_html: { class: "form-control" } %> 
     <%= f.input :translated_text, label: "Перевод", placeholder: "Введите перевод", input_html: { class: "form-control" } %>
+    <%= f.association :deck, label: "Колода", include_blank: false  %>
   </div>
   <div class="col-md-6">
     <% if card.picture? %>
@@ -16,4 +17,3 @@
     <%= f.button :submit, "Сохранить",  class: "btn-primary" %>
   </div>
 <% end %>
- 

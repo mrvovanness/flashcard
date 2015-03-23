@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'home#index'
   put 'check' => 'home#check_card'
 
-  resources :cards
+  resources :cards, :decks
   resources :user_sessions, only: [:new, :create, :destroy]
 
   get 'user_profile' => 'user_profile#edit'

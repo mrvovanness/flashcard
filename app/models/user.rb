@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :cards
+  has_many :decks
+  has_many :cards, through: :decks
   authenticates_with_sorcery!
 
   validates :password, length: { minimum: 4 }
