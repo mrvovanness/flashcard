@@ -15,3 +15,22 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap
+
+jQuery(document).on("ready page:change", function() { documentReady()
+})
+
+function documentReady() {
+  $("#new_deck_target").click(function() {
+    $("#new_deck_name").removeClass("hidden");
+    $(".card_deck").hide();
+    $("#new_deck_target").hide();
+    $("#new_deck_target").after("<a>Oтменить</a>");
+    $("#new_deck_target + a").click(function() {
+      $("#new_deck_name").addClass("hidden");
+      $("#new_deck_target + a").hide();
+      $(".card_deck").show();
+      $("#new_deck_target").show();
+    });
+  });
+}
+

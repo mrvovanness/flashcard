@@ -14,7 +14,7 @@
 
 /tmp/*
 /public/assets
-!/*.swp
+*.swp
 /config/database.yml
 /public/images/*
 /public/uploads/*
