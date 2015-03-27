@@ -3,7 +3,7 @@ class UserProfileController < ApplicationController
   end
 
   def update
-    if current_user.update_attributes!(user_params)
+    if current_user.update_attributes(user_params)
       flash[:success] = "Вы изменили свои данные"
       redirect_to root_path
     else
@@ -15,6 +15,6 @@ class UserProfileController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :current_deck_id, :updating_deck)
+    params.require(:user).permit(:email, :password, :password_confirmation, :current_deck)
   end
 end

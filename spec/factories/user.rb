@@ -4,6 +4,6 @@ FactoryGirl.define do
     password "1111"
     password_confirmation { password }
     id 1
-    current_deck_id 1
+    current_deck 1
   end
 end

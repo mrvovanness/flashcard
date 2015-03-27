@@ -17,7 +17,7 @@
 //= require bootstrap
 
 jQuery(document).on("ready page:change", function() { documentReady()
-})
+});
 
 function documentReady() {
   $("#new_deck_target, #cancel_new_deck").click(function() {

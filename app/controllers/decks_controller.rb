@@ -6,7 +6,6 @@ class DecksController < ApplicationController
   def show
   end
 
-
   def edit
   end
 
@@ -28,7 +27,7 @@ class DecksController < ApplicationController
   private
 
   def deck_params
-    params.require(:deck).permit(:name, :user_id)
+    params.require(:deck).permit(:name)
   end
 
   def find_deck

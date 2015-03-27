@@ -16,14 +16,15 @@ class CardsController < ApplicationController
   end
 
   def create
+    parameters = card_params
+    @card = current_user.cards.new(parameters)
     if params[:new_deck_name].present?
-      @card = current_user.decks.create(name: params[:new_deck_name]).cards.new(card_params)
-    else
-      @card = current_user.decks.find(card_params[:deck_id]).cards.new(card_params)
+      new_deck = current_user.decks.create(name: params[:new_deck_name])
+      parameters.merge!(deck_id: new_deck.id)
     end
-
     if @card.save
-      flash[:info] = "Ты создал новую карточку в колоде #{current_user.decks.find(@card.deck_id).name}"
+      flash[:info] = 
+        "Ты создал новую карточку в колоде #{current_user.decks.find(@card.deck_id).name}"
       redirect_to @card
     else
       flash[:danger] = "Что-то пошло не так. Попробуй еще раз!"
@@ -37,9 +38,9 @@ class CardsController < ApplicationController
       new_deck = current_user.decks.create(name: params[:new_deck_name])
       parameters.merge!(deck_id: new_deck.id)
     end
-    
     if @card.update(parameters)
-      flash[:info] = "Ты обновил карточку в колоде #{current_user.decks.find(@card.deck_id).name}"
+      flash[:info] = "Ты обновил карточку в колоде \
+      #{current_user.decks.find(@card.deck_id).name}"
       redirect_to @card
     else
       flash[:danger] = "Что-то пошло не так. Попробуй еще раз!"

@@ -1,9 +1,12 @@
 class HomeController < ApplicationController
   def index
-    if current_user.current_deck_id.present?
-      @card = current_user.decks.find(current_user.current_deck_id).cards.pending.first
+    if current_user.current_deck.present?
+      @card = current_user.
+              decks.find(current_user.current_deck).
+              cards.pending.first
     else
-      @card = current_user.cards.pending.first
+      @card = current_user.
+              cards.pending.first
     end
   end
 

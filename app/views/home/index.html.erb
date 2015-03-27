@@ -4,8 +4,8 @@
       Первый в мире удобный менеджер флеш-карточек. Именно так.
     </h3>
     <b>Текущая колода: 
-      <% if current_user.current_deck_id.present? %>
-        <%= Deck.find(current_user.current_deck_id).name %>
+      <% if current_user.current_deck.present? %>
+        <%= Deck.find(current_user.current_deck).name %>
       <% else %>
         не установлена
       <% end %>
