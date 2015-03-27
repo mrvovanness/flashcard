@@ -1,5 +1,4 @@
 class DecksController < ApplicationController
-  before_action :find_deck, only: [:show, :edit, :update, :destroy]
   def index
     @decks = current_user.decks.all
   end
@@ -7,22 +6,8 @@ class DecksController < ApplicationController
   def show
   end
 
-  def new
-    @deck = Deck.new
-  end
 
   def edit
-  end
-
-  def create
-    @deck = current_user.decks.new(deck_params)
-    if @deck.save
-      flash[:info] = "Ты создал новую колоду"
-      redirect_to @deck
-    else
-      flash[:danger] = "Попробуй еще раз"
-      render "new"
-    end
   end
 
   def update

@@ -1,5 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe Deck, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Deck do
+  let! (:deck) { create(:deck) }
+
+  it "titleize before saving" do
+    expect(deck.name).to eq("Magic")
+  end
 end

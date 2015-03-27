@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'home#index'
   put 'check' => 'home#check_card'
 
-  resources :cards, :decks
+  resources :cards
   resources :user_sessions, only: [:new, :create, :destroy]
 
   get 'user_profile' => 'user_profile#edit'
@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get 'signup' => 'user_registration#new', :as => :signup
   post 'signup' => 'user_registration#create'
   post 'logout' => 'user_sessions#destroy', :as => :logout
+
+  get 'decks' => 'decks#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
