@@ -23,8 +23,8 @@ class CardsController < ApplicationController
       parameters.merge!(deck_id: new_deck.id)
     end
     if @card.save
-      flash[:info] = 
-        "Ты создал новую карточку в колоде #{current_user.decks.find(@card.deck_id).name}"
+      flash[:info] = "Ты создал новую карточку в колоде \
+      #{current_user.decks.find(@card.deck_id).name}"
       redirect_to @card
     else
       flash[:danger] = "Что-то пошло не так. Попробуй еще раз!"

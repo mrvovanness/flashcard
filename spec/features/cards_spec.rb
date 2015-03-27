@@ -37,7 +37,7 @@ describe 'Manipulating cards and decks' do
     end
 
     it "opens cards in current deck" do
-      expect(page).to have_content "Текущая колода: Magic"
+      expect(page).to have_content "Текущая колода: magic"
     end
 
     it "hasn't other deck's cards" do
