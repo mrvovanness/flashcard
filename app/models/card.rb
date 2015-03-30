@@ -4,10 +4,10 @@ class Card < ActiveRecord::Base
 
   before_validation :shift_date, on: :create
   
-  validates :original_text, 
-            :translated_text, 
-            :review_date, 
-            :deck_id, 
+  validates :original_text,
+            :translated_text,
+            :review_date,
+            :deck_id,
             presence: true
 
   validate :the_text_cannot_be_the_same

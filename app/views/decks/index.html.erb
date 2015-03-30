@@ -3,7 +3,7 @@
     <th>Название колоды</th>
     <th>
       <%= simple_form_for current_user, url: user_profile_path, method: :patch do |f| %>
-        <%= f.hidden_field :current_deck, value: nil  %>
+        <%= f.hidden_field :current_deck_id, value: nil  %>
         <%= f.button :submit, "Отказаться от текущей колоды", class: "btn btn-default btn-xs" %>
       <% end %>
     </th>
@@ -16,7 +16,7 @@
           <b> Текущая колода</b>
         <% else %>
           <%= simple_form_for current_user, url: user_profile_path, method: :patch do |f| %>
-            <%= f.hidden_field :current_deck, value: deck.id %>
+            <%= f.hidden_field :current_deck_id, value: deck.id %>
             <%= f.button :submit, "Сделать текущей", class: "btn btn-primary btn-xs" %>
           <% end %>
         <% end %>

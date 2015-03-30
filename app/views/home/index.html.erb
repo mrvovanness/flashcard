@@ -5,7 +5,7 @@
     </h3>
     <b>Текущая колода: 
       <% if current_user.current_deck.present? %>
-        <%= Deck.find(current_user.current_deck).name %>
+        <%= current_user.current_deck.name %>
       <% else %>
         не установлена
       <% end %>

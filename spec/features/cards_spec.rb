@@ -30,7 +30,6 @@ describe 'Manipulating cards and decks' do
 
   context "switch decks" do
     before(:each) do
-      user.update_attribute(:current_deck, nil)
       card.update_attributes(deck_id: 2)
       visit decks_path
       click_button "Сделать текущей"
