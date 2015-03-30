@@ -2,7 +2,7 @@
   <tr>
     <th>Название колоды</th>
     <th>
-          <%= link_to "Сбросить текущую колоду",  set_current_deck_path(deck_id: nil), method: :put %>
+          <%= link_to "Сбросить текущую колоду",  reset_current_deck_path, method: :delete %>
     </th>
   </tr>
   <% @decks.each do |deck| %>

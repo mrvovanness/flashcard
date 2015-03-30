@@ -13,15 +13,19 @@ class UserProfileController < ApplicationController
   end
 
   def set_current_deck
-    current_user.update_attributes(current_deck_id: params[:deck_id])
-    if params[:deck_id] == nil
-      flash[:success] = "Текущая колода не установлена"
-    else
-    flash[:success] = "Текущая колода #{current_user.current_deck.name}"
+    deck = current_user.decks.find(params[:deck_id])
+    if deck && current_user.update_attributes(current_deck_id: params[:deck_id])
+      flash[:success] = "Текущая колода #{current_user.current_deck.name}"
     end
     redirect_to root_path
   end
-   
+
+  def reset_current_deck
+   current_user.update_attributes(current_deck_id: nil)
+   flash[:success] = "Текущая колода не установлена"
+   redirect_to root_path
+  end
+
   private
 
   def user_params
