@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post 'signup' => 'user_registration#create'
   post 'logout' => 'user_sessions#destroy', :as => :logout
 
+  put 'decks' => 'user_profile#set_current_deck', :as => :set_current_deck
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

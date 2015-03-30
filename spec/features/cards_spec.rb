@@ -32,7 +32,7 @@ describe 'Manipulating cards and decks' do
     before(:each) do
       card.update_attributes(deck_id: 2)
       visit decks_path
-      click_button "Сделать текущей"
+      click_link "Сделать текущей"
     end
 
     it "opens cards in current deck" do
@@ -46,19 +46,8 @@ describe 'Manipulating cards and decks' do
     it "show all cards" do
       card.update_attributes(deck_id: 1)
       visit decks_path
-      click_button "Отказаться от текущей колоды"
+      click_link "Сбросить текущую колоду"
       expect(page).to have_content "Мантия"
-    end
-  end
-
-  context "create card" do
-    it "create card with new deck" do
-      visit new_card_path
-      fill_in "card_original_text", with: "Go"
-      fill_in "card_translated_text", with: "Вперед"
-      fill_in "new_deck_name", with: "English"
-      click_button "Сохранить"
-      expect(page).to have_content "Ты создал новую карточку в колоде English"
     end
   end
 end
