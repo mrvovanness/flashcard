@@ -12,7 +12,7 @@
     <tr>
       <td><%= deck.name %></td>
       <td>
-        <% if deck.current?(current_user) %>
+        <% if deck.current? %>
           <b> Текущая колода</b>
         <% else %>
           <%= simple_form_for current_user, url: user_profile_path, method: :patch do |f| %>

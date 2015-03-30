@@ -50,4 +50,15 @@ describe 'Manipulating cards and decks' do
       expect(page).to have_content "Мантия"
     end
   end
+
+  context "create card" do
+    it "create card with new deck" do
+      visit new_card_path
+      fill_in "card_original_text", with: "Go"
+      fill_in "card_translated_text", with: "Вперед"
+      fill_in "new_deck_name", with: "English"
+      click_button "Сохранить"
+      expect(page).to have_content "Ты создал новую карточку в колоде English"
+    end
+  end
 end

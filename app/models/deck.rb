@@ -3,7 +3,7 @@ class Deck < ActiveRecord::Base
   belongs_to :user
   validates :name, presence: true
 
-  def current?(user)
+  def current?
     self == user.current_deck
   end
 end
