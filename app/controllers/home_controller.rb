@@ -12,8 +12,7 @@ class HomeController < ApplicationController
     if @card.check_translation(check_params[:user_translation])
       flash[:success] = "Правильно"
     else
-      flash[:warning] =
-        "Неправильно! Правильный ответ был #{@card.original_text}"
+      flash[:warning] = "Неправильно! Правильный ответ был #{@card.original_text}"
     end
     redirect_to root_path
   end

@@ -3,7 +3,6 @@ require "rails_helper"
 
 describe "User" do
   let!(:user) { create(:user) }
-  let!(:deck) { create(:deck) }
   before(:each) do
     login("ex@mail.com", "1111")
   end
