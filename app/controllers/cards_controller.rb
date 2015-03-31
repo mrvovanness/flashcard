@@ -1,5 +1,6 @@
 class CardsController < ApplicationController
   before_action :find_card, only:  [:show, :edit, :update, :destroy]
+
   def index
     @cards = current_user.cards.all
   end
@@ -17,21 +18,22 @@ class CardsController < ApplicationController
   def create
     @card = current_user.cards.new(card_params)
     if @card.save
-      flash[:info] = "Ты создал новую карточку"
+      flash[:info] = "Ты создал новую карточку в колоде #{@card.deck.name}"
       redirect_to @card
     else
       flash[:danger] = "Что-то пошло не так. Попробуй еще раз!"
-      render 'new'
+      render "new"
     end
   end
 
   def update
     if @card.update(card_params)
-      flash[:info] = "Ты обновил карточку"
+      flash[:info] = "Ты обновил карточку в колоде #{@card.deck.name}"
+
       redirect_to @card
     else
       flash[:danger] = "Что-то пошло не так. Попробуй еще раз!"
-      render 'edit'
+      render "edit"
     end
   end
 
@@ -43,7 +45,14 @@ class CardsController < ApplicationController
   private
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :picture, :picture_cache, :remote_picture_url, :remove_picture)
+    parameters = params.require(:card).permit(
+      :original_text, :translated_text, :picture, :picture_cache,
+      :remote_picture_url, :remove_picture, :deck_id
+    )
+    if params[:new_deck_name].present?
+      new_deck = current_user.decks.create(name: params[:new_deck_name])
+      parameters.merge!(deck_id: new_deck.id)
+    end
   end
 
   def find_card

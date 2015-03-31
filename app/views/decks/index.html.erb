@@ -1,0 +1,20 @@
+<table class="table table-striped">
+  <tr>
+    <th>Название колоды</th>
+    <th>
+          <%= link_to "Сбросить текущую колоду",  reset_current_deck_path, method: :delete %>
+    </th>
+  </tr>
+  <% @decks.each do |deck| %>
+    <tr>
+      <td><%= deck.name %></td>
+      <td>
+        <% if deck.current? %>
+          <b> Текущая колода</b>
+        <% else %>
+          <%= link_to "Сделать текущей",  set_current_deck_path(deck_id: deck.id), method: :put %>
+        <% end %>
+      </td> 
+    </tr>
+  <% end %>
+</table>

@@ -1,7 +1,11 @@
 <%= simple_form_for card, html: { multipart: true } do |f| %>
   <div class="col-md-6">
     <%= f.input :original_text, label: "Слово или текст", placeholder: "Введите слово или фразу", input_html: { class: "form-control" } %> 
-    <%= f.input :translated_text, label: "Перевод", placeholder: "Введите перевод", input_html: { class: "form-control" } %>
+    <%= f.input :translated_text, label: "Перевод", placeholder: "Введите перевод", input_html: { class: "form-control" } %><br>
+    <%= f.association :deck, label: "Колода", include_blank: false  %>
+    <a id="new_deck_target" class="card_deck">Или создай новую колоду</a>
+    <%= text_field_tag "new_deck_name", nil, placeholder: "Введи название новой колоды", class: "form-control card_deck", style: "display: none;" %>
+    <a id="cancel_new_deck" class="card_deck" style="display: none;">Отменить</a>
   </div>
   <div class="col-md-6">
     <% if card.picture? %>
@@ -16,4 +20,3 @@
     <%= f.button :submit, "Сохранить",  class: "btn-primary" %>
   </div>
 <% end %>
- 
