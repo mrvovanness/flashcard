@@ -1,5 +1,5 @@
 class RenameColumnToCards < ActiveRecord::Migration
   def change
-    rename_column :cards, :visual, :picture
+    add_column :cards, :picture, :string
   end
 end
