@@ -29,7 +29,6 @@ class CardsController < ApplicationController
   def update
     if @card.update(card_params)
       flash[:info] = "Ты обновил карточку в колоде #{@card.deck.name}"
-
       redirect_to @card
     else
       flash[:danger] = "Что-то пошло не так. Попробуй еще раз!"
@@ -52,6 +51,8 @@ class CardsController < ApplicationController
     if params[:new_deck_name].present?
       new_deck = current_user.decks.create(name: params[:new_deck_name])
       parameters.merge!(deck_id: new_deck.id)
+    else
+      parameters
     end
   end
 
