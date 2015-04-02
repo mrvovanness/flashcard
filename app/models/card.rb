@@ -28,12 +28,12 @@ class Card < ActiveRecord::Base
 
   def check_translation(user_translation)
     if user_translation.mb_chars.downcase.strip == original_text.mb_chars.downcase.strip
-      fail_count = 0
+      self.fail_count = 0
     else
       increment(:fail_count)
     end
 
-    update_attributes(fail_count: calculate_fail_count,
+    update_attributes(fail_count: [self.fail_count, 3].min,
                       number_of_reviews: calculate_number_of_reviews,
                       review_date: calculate_new_review_date,)
 
@@ -58,13 +58,6 @@ class Card < ActiveRecord::Base
     when 2 then DateTime.now + 1.weeks
     when 3 then DateTime.now + 2.weeks
     else DateTime.now + 1.months
-    end
-  end
-
-  def calculate_fail_count
-    case fail_count
-    when 3 then 0
-    else fail_count
     end
   end
 end
