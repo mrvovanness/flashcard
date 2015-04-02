@@ -12,7 +12,9 @@ class Card < ActiveRecord::Base
 
   validate :the_text_cannot_be_the_same
 
-  scope :pending, -> { where('review_date <=?', DateTime.now).order("RANDOM()") }
+  scope :pending, -> {
+    where('review_date <=?', DateTime.now).order("RANDOM()")
+  }
 
   def the_text_cannot_be_the_same
     if original_text == translated_text
@@ -26,33 +28,37 @@ class Card < ActiveRecord::Base
 
   def check_translation(user_translation)
     if user_translation.mb_chars.downcase.strip == original_text.mb_chars.downcase.strip
-      update_attributes(review_date: review_shift, box: box_shift, fail_count: 0)
+      update_attributes(review_date: review_shift,
+                        number_of_reviews: number_of_reviews_shift,
+                        fail_count: 0)
     else
       update_attributes(fail_count: fail_count + 1)
       if fail_count == 3
-        update_attributes(review_date: DateTime.now + 12.hours, box: 1, fail_count: 0)
+        update_attributes(review_date: DateTime.now,
+                          number_of_reviews: 0,
+                          fail_count: 0)
       end
       return false
     end
   end
 
   def review_shift
-    if box == 0
+    if number_of_reviews == 0
       DateTime.now + 12.hours
-    elsif box == 1
+    elsif number_of_reviews == 1
       DateTime.now + 3.days
-    elsif box == 2
+    elsif number_of_reviews == 2
       DateTime.now + 1.weeks
-    elsif box == 3
+    elsif number_of_reviews == 3
       DateTime.now + 2.weeks
-    elsif box == 4
+    elsif number_of_reviews == 4
       DateTime.now + 1.months
     end
   end
 
-  def box_shift
-    if box < 4
-      box + 1
+  def number_of_reviews_shift
+    if number_of_reviews < 4
+      number_of_reviews + 1
     else
       4
     end
