@@ -2,7 +2,7 @@ class Card < ActiveRecord::Base
   belongs_to :deck
   mount_uploader :picture, PictureUploader
 
-  before_validation :set_date, on: :create
+  before_validation :set_review_date, on: :create
   
   validates :original_text,
             :translated_text,
@@ -20,7 +20,7 @@ class Card < ActiveRecord::Base
     end
   end
 
-  def set_date
+  def set_review_date
     self.review_date = DateTime.now
   end
 
