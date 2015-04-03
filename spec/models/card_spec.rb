@@ -4,15 +4,15 @@ describe Card do
   let! (:card) { create(:card) }
 
   it "check matching words" do
-    expect(card.check_translation("Mantle")).to be true
+    expect(card.check_translation("Mantle")).to be 0
   end
 
   it "check mathing words regardless language and case" do
-    expect(card.check_translation("mANtlE")).to be true
+    expect(card.check_translation("mANtlE")).to be 0
   end
 
   it "check unmatching words" do
-    expect(card.check_translation("future")).to be false
+    expect(card.check_translation("future")).to be 5
   end
 
   it "pass nonequal words" do

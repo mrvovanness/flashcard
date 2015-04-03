@@ -28,9 +28,9 @@ describe 'Manipulating cards and decks' do
     end
 
     it "detects typos" do
-    fill_in :user_translation, with: "Mantel"
-    click_button "Проверить"
-    expect(page).to have_content "произошла опечатка"
+      fill_in :user_translation, with: "Mantel"
+      click_button "Проверить"
+      expect(page).to have_content "произошла опечатка"
     end
   end
 

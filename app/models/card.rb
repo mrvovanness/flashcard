@@ -27,9 +27,10 @@ class Card < ActiveRecord::Base
   end
 
   def check_translation(user_translation)
-    case DamerauLevenshtein.distance(
+    letters_diff =  DamerauLevenshtein.distance(
       original_text.downcase.strip, user_translation.downcase.strip, 0
     )
+    case letters_diff
     when 0 then self.fail_count = 0
     else increment(:fail_count)
     end
@@ -37,8 +38,7 @@ class Card < ActiveRecord::Base
     update_attributes(fail_count: [self.fail_count, 3].min,
                       number_of_reviews: calculate_number_of_reviews,
                       review_date: calculate_new_review_date,)
-
-    return !(self.fail_count > 0)
+    return letters_diff
   end
 
   def calculate_number_of_reviews

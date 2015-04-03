@@ -9,19 +9,15 @@ class HomeController < ApplicationController
 
   def check_card
     @card = Card.find(check_params[:card_id])
-    if @card.check_translation(check_params[:user_translation])
+    case @card.check_translation(check_params[:user_translation])
+    when 0 then
       flash[:success] = "Правильно"
+    when 1, 2 then
+      flash[:warning] = "Возможно, произошла опечатка\n
+      Правильный ответ #{@card.original_text}\n
+      Вы ввели #{params[:user_translation]}"
     else
-      case DamerauLevenshtein.distance(
-        @card.original_text, params[:user_translation], 0
-      )
-      when 1,2 then
-        flash[:warning] = "Возможно, произошла опечатка\n
-          Правильный ответ #{@card.original_text}\n
-          Вы ввели #{params[:user_translation]}"
-      else 
-        flash[:warning] = "Неправильно! Правильный ответ был #{@card.original_text}"
-      end
+      flash[:warning] = "Неправильно! Правильный ответ был #{@card.original_text}"
     end
     redirect_to root_path
   end
