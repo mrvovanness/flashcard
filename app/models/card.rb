@@ -27,10 +27,11 @@ class Card < ActiveRecord::Base
   end
 
   def check_translation(user_translation)
-    if user_translation.mb_chars.downcase.strip == original_text.mb_chars.downcase.strip
-      self.fail_count = 0
-    else
-      increment(:fail_count)
+    case DamerauLevenshtein.distance(
+      original_text.downcase.strip, user_translation.downcase.strip, 0
+    )
+    when 0 then self.fail_count = 0
+    else increment(:fail_count)
     end
 
     update_attributes(fail_count: [self.fail_count, 3].min,

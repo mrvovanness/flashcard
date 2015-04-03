@@ -13,9 +13,9 @@ class HomeController < ApplicationController
       flash[:success] = "Правильно"
     else
       case DamerauLevenshtein.distance(
-        @card.original_text, params[:user_translation]
+        @card.original_text, params[:user_translation], 0
       )
-      when 1 then
+      when 1,2 then
         flash[:warning] = "Возможно, произошла опечатка\n
           Правильный ответ #{@card.original_text}\n
           Вы ввели #{params[:user_translation]}"
