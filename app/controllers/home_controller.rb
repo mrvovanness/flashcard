@@ -12,7 +12,16 @@ class HomeController < ApplicationController
     if @card.check_translation(check_params[:user_translation])
       flash[:success] = "Правильно"
     else
-      flash[:warning] = "Неправильно! Правильный ответ был #{@card.original_text}"
+      case DamerauLevenshtein.distance(
+        @card.original_text, params[:user_translation]
+      )
+      when 1 then
+        flash[:warning] = "Возможно, произошла опечатка\n
+          Правильный ответ #{@card.original_text}\n
+          Вы ввели #{params[:user_translation]}"
+      else 
+        flash[:warning] = "Неправильно! Правильный ответ был #{@card.original_text}"
+      end
     end
     redirect_to root_path
   end

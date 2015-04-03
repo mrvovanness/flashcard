@@ -22,9 +22,15 @@ describe 'Manipulating cards and decks' do
     end
 
     it "opens error flash if don't match" do
-      fill_in :user_translation, with: "Monte"
+      fill_in :user_translation, with: "wrong staff"
       click_button "Проверить"
       expect(page).to have_content "Неправильно!"
+    end
+
+    it "detects typos" do
+    fill_in :user_translation, with: "Mantel"
+    click_button "Проверить"
+    expect(page).to have_content "произошла опечатка"
     end
   end
 
