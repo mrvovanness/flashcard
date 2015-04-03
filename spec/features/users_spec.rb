@@ -19,7 +19,7 @@ describe "User" do
       expect(page).to have_content "Ты создал новую карточку в колоде English"
     end
     it "with correct review date" do
-      expect(page).to have_content "#{Date.today}"
+      expect(page).to have_content "#{DateTime.now.in_time_zone('UTC')}"
     end
   end
 end

@@ -27,10 +27,10 @@ class Card < ActiveRecord::Base
   end
 
   def check_translation(user_translation)
-    @letters_diff = DamerauLevenshtein.distance(
+    @typos_count = DamerauLevenshtein.distance(
       original_text.downcase.strip, user_translation.downcase.strip, 0
     )
-    case @letters_diff
+    case @typos_count
     when 0 then self.fail_count = 0
     when 1, 2 then fail_count
     else increment(:fail_count)
@@ -39,11 +39,11 @@ class Card < ActiveRecord::Base
     update_attributes(fail_count: [self.fail_count, 3].min,
                       number_of_reviews: calculate_number_of_reviews,
                       review_date: calculate_new_review_date,)
-    return @letters_diff
+    return { check_success: @typos_count == 0, typos_count: @typos_count }
   end
 
   def calculate_number_of_reviews
-    return number_of_reviews if @letters_diff == 1 && 2 
+    return number_of_reviews if @typos_count == 1 && 2
 
     case fail_count
     when 0 then [number_of_reviews + 1, 4].min
@@ -54,7 +54,7 @@ class Card < ActiveRecord::Base
 
   def calculate_new_review_date
     return DateTime.now if fail_count == 3
-    return review_date if fail_count != 0 or @letters_diff == 1 && 2
+    return review_date if fail_count != 0 || @typos_count == 1 && 2
 
     case number_of_reviews
     when 0 then DateTime.now + 12.hours

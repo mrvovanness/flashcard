@@ -9,12 +9,13 @@ class HomeController < ApplicationController
 
   def check_card
     @card = Card.find(check_params[:card_id])
-    case @card.check_translation(check_params[:user_translation])
+    results = @card.check_translation(check_params[:user_translation])
+    case results[:typos_count]
     when 0 then
       flash[:success] = "Правильно"
     when 1, 2 then
-      flash[:warning] = "Возможно, произошла опечатка\n
-      Правильный ответ #{@card.original_text}\n
+      flash[:warning] = "Возможно, произошла опечатка<br>
+      Правильный ответ #{@card.original_text}<br>
       Вы ввели #{params[:user_translation]}"
     else
       flash[:warning] = "Неправильно! Правильный ответ был #{@card.original_text}"
