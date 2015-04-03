@@ -27,11 +27,12 @@ class Card < ActiveRecord::Base
   end
 
   def check_translation(user_translation)
-    letters_diff =  DamerauLevenshtein.distance(
+    letters_diff = DamerauLevenshtein.distance(
       original_text.downcase.strip, user_translation.downcase.strip, 0
     )
     case letters_diff
     when 0 then self.fail_count = 0
+    when 1, 2 then self.fail_count = [fail_count, 1].max
     else increment(:fail_count)
     end
 
