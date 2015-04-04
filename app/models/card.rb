@@ -27,24 +27,23 @@ class Card < ActiveRecord::Base
   end
 
   def check_translation(user_translation)
-    @typos_count = DamerauLevenshtein.distance(
-      original_text.downcase.strip, user_translation.downcase.strip, 0
+    typos_count = DamerauLevenshtein.distance(
+      original_text.mb_chars.downcase.strip,
+      user_translation.mb_chars.downcase.strip, 0
     )
-    case @typos_count
-    when 0 then self.fail_count = 0
-    when 1, 2 then fail_count
-    else increment(:fail_count)
+    case typos_count
+    when 0    then self.fail_count = 0
+    when 1, 2 then self.fail_count = [fail_count, 1].max
+    else      increment(:fail_count)
     end
 
     update_attributes(fail_count: [self.fail_count, 3].min,
                       number_of_reviews: calculate_number_of_reviews,
                       review_date: calculate_new_review_date,)
-    return { check_success: @typos_count == 0, typos_count: @typos_count }
+    return { check_success: typos_count == 0, typos_count: typos_count }
   end
 
   def calculate_number_of_reviews
-    return number_of_reviews if @typos_count == 1 && 2
-
     case fail_count
     when 0 then [number_of_reviews + 1, 4].min
     when 3 then 0
@@ -54,7 +53,7 @@ class Card < ActiveRecord::Base
 
   def calculate_new_review_date
     return DateTime.now if fail_count == 3
-    return review_date if fail_count != 0 || @typos_count == 1 && 2
+    return review_date if fail_count != 0
 
     case number_of_reviews
     when 0 then DateTime.now + 12.hours

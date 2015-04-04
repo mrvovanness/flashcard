@@ -9,8 +9,8 @@ class HomeController < ApplicationController
 
   def check_card
     @card = Card.find(check_params[:card_id])
-    results = @card.check_translation(check_params[:user_translation])
-    case results[:typos_count]
+    result = @card.check_translation(check_params[:user_translation])
+    case result[:typos_count]
     when 0 then
       flash[:success] = "Правильно"
     when 1, 2 then

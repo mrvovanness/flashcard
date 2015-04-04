@@ -8,11 +8,13 @@ describe Card do
   end
 
   it "check mathing words regardless language and case" do
-    expect(card.check_translation("mANtlE")).to be 0
+    result = card.check_translation("mANtlE")
+    expect(result[:typos_count]).to be 0
   end
 
   it "check unmatching words" do
-    expect(card.check_translation("future")).to be 5
+    result = card.check_translation("future")
+    expect(result[:typos_count]).to be 5
   end
 
   it "pass nonequal words" do
