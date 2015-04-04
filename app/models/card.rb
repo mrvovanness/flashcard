@@ -40,7 +40,9 @@ class Card < ActiveRecord::Base
     update_attributes(fail_count: [self.fail_count, 3].min,
                       number_of_reviews: calculate_number_of_reviews,
                       review_date: calculate_new_review_date,)
-    return { check_success: typos_count == 0, typos_count: typos_count }
+
+    { check_success: typos_count == 0,
+      typos_count: typos_count }
   end
 
   def calculate_number_of_reviews

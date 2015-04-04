@@ -4,7 +4,8 @@ describe Card do
   let! (:card) { create(:card) }
 
   it "check matching words" do
-    expect(card.check_translation("Mantle")).to be 
+    result = card.check_translation("Mantle")
+    expect(result[:check_success]).to be true
   end
 
   it "check mathing words regardless language and case" do
