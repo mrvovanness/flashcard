@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
     validates :password, confirmation: true
     validates :password_confirmation, presence: true
   end
+
+  def self.notify_pending_cards
+    cards.where("review_date >= ?", DateTime.now).each do |user|
+      NotificationMailer.pending_cards(user)
 end
