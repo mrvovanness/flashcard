@@ -1,8 +1,7 @@
 class NotificationsMailer < ActionMailer::Base
-  default from: "notification@flashcard-app-sample.herokuapp.com"
   def pending_cards(user)
     @user = user
-    @url = "http://flashcard-app-sample.herokuapp.com/"
+    @url = ENV['URL_DEFAULT']
     mail(to: @user.email, subject: "Пришло время проверить карточки")
   end
 end

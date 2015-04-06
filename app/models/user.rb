@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
   end
 
   def self.notify_pending_cards
-    cards.where("review_date >= ?", DateTime.now).each do |user|
-      NotificationMailer.pending_cards(user)
+    joins(:cards).uniq.where("review_date <= ?", DateTime.now).each do |user|
+      NotificationsMailer.pending_cards(user)
     end
   end
 end
