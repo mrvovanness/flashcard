@@ -38,5 +38,6 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  config.action_mailer.default_options = {from: ENV['EMAIL_DEFAULT']}
+  config.action_mailer.default_options = { from: ENV['EMAIL_DEFAULT'] }
+  config.action_mailer.default_url_options = { host: ENV['URL_DEFAULT'] }
 end
