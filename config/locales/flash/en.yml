@@ -1,0 +1,12 @@
+en:
+  login_alert: Log in or sign up first!
+  logout_alert: You logged out
+  card_action_success: "You just %{action} card in "
+  card_action_error: Something went wrong. Try again!
+  card_check_success: This is right!
+  card_typos_alert: "Perhaps, some typo occured.<br>The right answer is %{name_of_right_card}.<br>You wrote %{user_typed_word}."
+  card_check_error: "Wrong! The right answer was %{name_of_right_card}"
+  user_action_success: "Your information is successfully %{action}"
+  user_action_error: "Your information is not %{action}. Check your enterings!"
+  user_current_deck: "Current deck now is %{name_of_deck}"
+  user_current_deck_reset: Current deck is not set

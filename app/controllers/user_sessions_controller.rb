@@ -7,17 +7,17 @@ class UserSessionsController < ApplicationController
 
   def create
     if @user = login(params[:email], params[:password])
-      flash[:success] = "Добро пожаловать!"
+      flash[:success] = t(:user_action_success, action: "entered")
       redirect_to root_path
     else
-      flash[:danger] = "Попробуй еще раз или зарегистируйся!"
+      flash[:danger] = t(:user_action_error, action: "correct")
       render "new"
     end
   end
 
   def destroy
     logout
-    flash[:info] = "Вы вышли!"
+    flash[:info] = t(:logout_alert)
     redirect_to login_path
   end
 end

@@ -1,8 +1,8 @@
 <div class="container">
   <%= simple_form_for @user, url: signup_path, html: { class: "form-signin" } do |f| %>
-    <%= f.text_field :email, label: false, placeholder: "Эл. почта", class: "form-control"  %>
-    <%= f.password_field :password , label: false, placeholder: "Пароль", class: "form-control" %>
-    <%= f.password_field :password_confirmation, label: false, placeholder: "Еще раз пароль", class: "form-control"  %>
-    <%= f.button :submit, "Сохранить", class: "btn-lg btn-primary btn-block" %>
+    <%= f.text_field :email, label: false, placeholder: t(:email), class: "form-control"  %>
+    <%= f.password_field :password , label: false, placeholder: t(:password), class: "form-control" %>
+    <%= f.password_field :password_confirmation, label: false, placeholder: t(:password_again), class: "form-control" %>
+    <%= f.button :submit, t(:signup), class: "btn-lg btn-primary btn-block" %>
   <% end %>
 </div>

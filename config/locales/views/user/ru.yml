@@ -1,0 +1,10 @@
+ru:
+  email: Эл. почта
+  password: Пароль
+  password_again: Еще раз пароль
+  signup: Зарегистрироваться
+  login: Войти
+  new_email: Новая почта
+  new_password: Новый пароль
+  new_password_again: Еще раз новый пароль
+  save_button: Сохранить

@@ -1,21 +1,20 @@
 <div class="container">
   <section class="row">
     <div class="col-md-3">
-      <b>Слово-оригинал</b>
+      <b><%= t :original %></b>
       <h4><%= @card.original_text %></h4>
     </div>
     <div class="col-md-3">
-      <b>Перевод</b>
+      <b><%= t :translation %></b>
       <h4><%= @card.translated_text %></h4>
     </div>
     <div class="col-md-3">
-      <b>Пересмотреть:</b>
+      <b><%= t :review_date %></b>
       <h4><%= @card.review_date %></h4>
     </div>
     <div class="col-md-3">
       <%= image_tag @card.picture_url(:thumb), class: "img-circle" %><br>
-      <%= link_to "Редактировать", edit_card_path(@card.id) %>
+      <%= link_to t(:edit), edit_card_path(@card.id) %>
     </div>
   </section>
 </div>
-      

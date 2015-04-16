@@ -1,21 +1,21 @@
-<b>Всего карточек:
+<b><%= t :card_count_label %>:
   <%= current_user.cards.count %>
 </b>
 <table class="table table-striped">
   <tr>
-    <th>Оригинал</th>
-    <th>Перевод</th>
-    <th>Дата пересмотра</th>
-    <th colspan="2"></th>
+    <th><%= t :original %></th>
+    <th><%= t :translation %></th>
+    <th><%= t :review_date %></th>
+    <th colspan="3"></th>
   </tr>
   <% @cards.each do |card| %>
     <tr>
       <td><%= card.original_text %></td>
         <td><%= card.translated_text %></td>
         <td><%= card.review_date %></td>
-        <td><%= link_to 'Показать', card_path(card) %></td>
-        <td><%= link_to 'Поменять', edit_card_path(card) %></td>
-        <td><%= link_to 'Сжечь', card_path(card), 
+        <td><%= link_to t(:show), card_path(card) %></td>
+        <td><%= link_to t(:edit), edit_card_path(card) %></td>
+        <td><%= link_to t(:delete), card_path(card), 
           method: :delete, 
           data: { confirm: 'Уверен?' } %></td>
     </tr>

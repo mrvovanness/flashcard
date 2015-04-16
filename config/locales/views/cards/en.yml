@@ -1,0 +1,21 @@
+en:
+  word_or_text:
+  enter_word_prompt: Enter word or phrase
+  translation:
+  enter_translation: Enter translation for your word or text
+  deck:
+  new_deck: Or create new deck
+  enter_deck_name: Enter deck name
+  cancel:
+  remove_current_picture: Remove current picture
+  upload_picture_label: Upload picture for your card (this is optional)
+  upload_picture_from_web_label: Or add picture from Web
+  add_link_placeholder: Just paste a link here
+  save: Save
+  card_count_label: Total amount of cards
+  original:
+  translation:
+  review_date:
+  show:
+  edit:
+  delete:

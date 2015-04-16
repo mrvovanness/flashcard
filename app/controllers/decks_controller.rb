@@ -10,18 +10,9 @@ class DecksController < ApplicationController
   end
 
   def update
-    if @deck.update(deck_params)
-      flash[:info] = "Ты изменил колоду"
-      redirect_to @deck
-    else
-      flash[:danger] = "Попробуй еще раз"
-      render "edit"
-    end
   end
 
   def destroy
-    @deck.destroy
-    redirect_to decks_paths
   end
 
   private

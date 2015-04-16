@@ -1,13 +1,13 @@
 <div class="row">
   <div class="col-md-6">
     <h3 class="text-center"> 
-      Первый в мире удобный менеджер флеш-карточек. Именно так.
+      <%=t :lead %>
     </h3>
-    <b>Текущая колода: 
+    <b><%= t(:current_deck) %>:
       <% if current_user.current_deck.present? %>
         <%= current_user.current_deck.name %>
       <% else %>
-        не установлена
+        <%= t(:not_set) %>
       <% end %>
       </b>
   </div>
@@ -16,12 +16,12 @@
       <h4><p class="bg-danger"><%= @card.translated_text %></p></h4>
       <%= form_tag check_path, method: :put, class: "form-inline" do %>
         <%= hidden_field_tag :card_id, @card.id %>
-        <%= text_field_tag :user_translation, nil, placeholder: 'Введите перевод', class: "form-control" %>
-        <button class="btn btn-primary">Проверить</button><br><br>
+        <%= text_field_tag :user_translation, nil, placeholder: t(:check_translation), class: "form-control" %>
+        <%= button_tag t(:try_it), class: "btn btn-primary" %><br><br>
         <%= image_tag @card.picture_url, class: "img-rounded" %><br>
       <% end %><br>
     <% else %>
-      <b>Нет карточек для проверки</b><br>
+      <b><%= t :no_cards_for_review  %></b><br>
     <% end %>
   </div>
 </div>

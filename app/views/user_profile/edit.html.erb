@@ -2,10 +2,10 @@
   <section class="row">
     <div class="col-md-6">
       <%= simple_form_for current_user, url: user_profile_path do |f| %>
-        <%= f.text_field :email, label: false, placeholder: 'Новая почта' %><br>
-        <%= f.password_field :password , label: false, placeholder: 'Новый пароль'%><br>
-        <%= f.password_field :password_confirmation, label: false, placeholder: 'Еще раз новый пароль' %><br>
-        <%= f.button :submit, 'Сохранить' %><br>
+        <%= f.text_field :email, label: false, placeholder: t(:new_email), class: "form-control" %><br>
+        <%= f.password_field :password , label: false, placeholder: t(:new_password), class: "form-control" %><br>
+        <%= f.password_field :password_confirmation, label: false, placeholder: t(:new_password_again), class: "form-control" %><br>
+        <%= f.button :submit, t(:save_button), class: "btn-primary" %><br>
       <% end %>
     </div>
   </section>

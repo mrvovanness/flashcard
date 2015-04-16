@@ -12,13 +12,14 @@ class HomeController < ApplicationController
     result = @card.check_translation(check_params[:user_translation])
     case result[:typos_count]
     when 0 then
-      flash[:success] = "Правильно"
+      flash[:success] = t(:card_check_success)
     when 1, 2 then
-      flash[:warning] = "Возможно, произошла опечатка<br>
-      Правильный ответ #{@card.original_text}<br>
-      Вы ввели #{params[:user_translation]}"
+      flash[:warning] = t(:card_typos_alert,
+                          name_of_right_card: @card.original_text,
+                          user_typed_word: params[:user_translation])
     else
-      flash[:warning] = "Неправильно! Правильный ответ был #{@card.original_text}"
+      flash[:warning] = t(:card_check_error,
+                          name_of_right_card: @card.original_text)
     end
     redirect_to root_path
   end

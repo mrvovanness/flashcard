@@ -5,11 +5,17 @@ class User < ActiveRecord::Base
 
   authenticates_with_sorcery!
 
+  before_validation :set_user_locale
+  validates :locale, presence: true, on: :create
   validates :email, uniqueness: true
   with_options unless: "password.nil?" do
     validates :password, length: { minimum: 4 }
     validates :password, confirmation: true
     validates :password_confirmation, presence: true
+  end
+
+  def set_user_locale
+    I18n.locale
   end
 
   def self.notify_pending_cards

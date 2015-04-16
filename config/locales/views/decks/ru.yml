@@ -1,0 +1,5 @@
+ru:
+  deck_name: Название колоды
+  reset_current_deck: Сбросить текущую колоду
+  current_deck: Текущая колода
+  set_as_current: Сделать текущей
