@@ -1,8 +1,8 @@
-require 'support/login_helper'
-require 'rails_helper'
+require "support/login_helper"
+require "rails_helper"
 
-describe 'Manipulating cards and decks' do
-  let!(:user) { create(:user) }
+describe "User do specific actions:" do
+  let!(:user) { create(:user, locale: "ru") }
   let!(:card) { create(:card) }
   let!(:deck) { create(:deck) }
   before(:each) do
@@ -10,46 +10,46 @@ describe 'Manipulating cards and decks' do
     card.update_attribute(:review_date, Date.today - 1.day)
   end
 
-  context "check translations" do
+  context "checks translations -" do
     before(:each) do
       visit root_path
     end
 
-    it "opens success flash if match" do
+    it "success" do
       fill_in :user_translation, with: "Mantle"
-      click_button "Проверить"
-      expect(page).to have_content "Правильно"
+      click_button "Попробовать"
+      expect(page).to have_content "Правильный ответ!"
     end
 
-    it "opens error flash if don't match" do
+    it "error" do
       fill_in :user_translation, with: "wrong staff"
-      click_button "Проверить"
+      click_button "Попробовать"
       expect(page).to have_content "Неправильно!"
     end
 
-    it "detects typos" do
+    it "detect typos" do
       fill_in :user_translation, with: "Mantel"
-      click_button "Проверить"
-      expect(page).to have_content "произошла опечатка"
+      click_button "Попробовать"
+      expect(page).to have_content "произошла ошибка"
     end
   end
 
-  context "switch decks" do
+  context "checks decks -" do
     before(:each) do
       card.update_attributes(deck_id: 2)
       visit decks_path
       click_link "Сделать текущей"
     end
 
-    it "opens cards in current deck" do
+    it "see current deck" do
       expect(page).to have_content "Текущая колода: magic"
     end
 
-    it "hasn't other deck's cards" do
+    it "don't see other decks cards" do
       expect(page).not_to have_content "Мантия"
     end
 
-    it "show all cards" do
+    it "see all cards when reset current deck" do
       card.update_attributes(deck_id: 1)
       visit decks_path
       click_link "Сбросить текущую колоду"

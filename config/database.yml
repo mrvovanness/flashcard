@@ -1,0 +1,12 @@
+development:
+  adapter: <%= ENV['ADAPTER'] %>
+  database: <%= ENV['DB_DEV'] %>
+  username: <%= ENV['USR_NAME'] %>
+  password: <%= ENV['PSWD'] %>
+               
+test:
+  adapter: <%= ENV['ADAPTER'] %>
+  database: <%= ENV['DB_TEST'] %>
+  username: <%= ENV['USR_NAME'] %>
+  password: <%= ENV['PSWD'] %>
+                                

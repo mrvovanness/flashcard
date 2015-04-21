@@ -59,3 +59,4 @@ gem 'rails_12factor', group: :production
 gem 'damerau-levenshtein'
 gem 'whenever', require: false
 gem 'http_accept_language'
+gem 'rails-i18n'

@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   resources :user_sessions, only: [:new, :create, :destroy]
 
   get 'user_profile' => 'user_profile#edit'
+  put 'user_profile' => 'user_profile#change_locale', as: :change_user_locale
   patch 'user_profile' => 'user_profile#update'
-  put '/' => 'application#set_locale', :as => :language
+  get 'change_locale/:locale' => 'locales#update', as: :change_locale
   
   get 'login' => 'user_sessions#new', :as => :login
   get 'signup' => 'user_registration#new', :as => :signup

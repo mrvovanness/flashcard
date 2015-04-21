@@ -27,6 +27,12 @@ class UserProfileController < ApplicationController
    redirect_to root_path
   end
 
+  def change_locale
+    current_user.update_attributes(locale: params[:new_locale])
+    flash[:success] = t(:user_action_success, action: "updated")
+    redirect_to root_path
+  end
+
   private
 
   def user_params

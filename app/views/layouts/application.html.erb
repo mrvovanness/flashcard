@@ -24,9 +24,9 @@
           <%= link_to t(:log_in), login_path %>
         </div>
         <div class="col-md-6">
-          <%= link_to :EN, root_path(locale: :en), method: :put %>
+          <%= link_to "EN", change_locale_path(:en) %>
           |
-          <%= link_to :RU, root_path(locale: :ru), method: :put %>
+          <%= link_to "RU", change_locale_path(:ru) %>
         </div>
       <% end %>
     </div>

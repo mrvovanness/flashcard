@@ -6,7 +6,18 @@ class ApplicationController < ActionController::Base
   before_action :require_login, :set_locale
  
   def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
+    locale = if current_user
+               current_user.locale
+             elsif params[:locale]
+               session[:locale] = params[:locale]
+             elsif session[:locale]
+               session[:locale]
+             else
+               http_accept_language.compatible_language_from(I18n.available_locales)
+             end
+    if locale && I18n.available_locales.include?(locale.to_sym)
+      I18n.locale = locale.to_sym
+    end
   end
 
   private

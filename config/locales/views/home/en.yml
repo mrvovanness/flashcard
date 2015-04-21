@@ -1,6 +1,5 @@
 en:
-  current_deck:
-  not_set:
+  not_set: not set
   check_translation: try to translate
-  try_it:
-  no_cards_for_review:
+  try_it: try it
+  no_cards_for_review: No cards for review

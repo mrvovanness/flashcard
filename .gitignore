@@ -16,9 +16,9 @@
 /public/assets
 *.swp
 *~
-/config/database.yml
 /public/images/*
 /public/uploads/*
+/.rvmrc
 
 # Ignore application configuration
 /config/application.yml
