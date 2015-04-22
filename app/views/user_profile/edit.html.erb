@@ -9,8 +9,8 @@
       <% end %>
     </div>
     <div class="col-md-6">
-      <%= form_tag change_user_locale_path, method: :put do %>
-        <%= select_tag :new_locale, options_for_select([["english", "en"],["russian", "ru"]]), class: "form-control" %>
+      <%= simple_form_for current_user, url: user_profile_path do |f| %>
+        <%= f.input :locale, collection: [["english", "en"],["russian", "ru"]], class: "form-control" %>
         <%= submit_tag t(:save_button), class: "btn-primary" %>
       <% end %>
   </section>

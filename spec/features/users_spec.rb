@@ -22,9 +22,9 @@ describe "User" do
   end
   context "changes language" do
     it "before login" do
-    visit root_path
-    click_link "RU"
-    expect(page).to have_content "Флэшкарточкер"
+      visit root_path
+      click_link "RU"
+      expect(page).to have_content "Флэшкарточкер"
     end
   end
 end

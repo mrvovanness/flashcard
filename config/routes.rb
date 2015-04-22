@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   resources :user_sessions, only: [:new, :create, :destroy]
 
   get 'user_profile' => 'user_profile#edit'
-  put 'user_profile' => 'user_profile#change_locale', as: :change_user_locale
   patch 'user_profile' => 'user_profile#update'
   get 'change_locale/:locale' => 'locales#update', as: :change_locale
   
