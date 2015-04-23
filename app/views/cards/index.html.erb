@@ -13,11 +13,11 @@
       <td><%= card.original_text %></td>
         <td><%= card.translated_text %></td>
         <td><%= card.review_date %></td>
-        <td><%= link_to t(:show), card_path(card) %></td>
-        <td><%= link_to t(:edit), edit_card_path(card) %></td>
-        <td><%= link_to t(:delete), card_path(card), 
+        <td><%= link_to t('action_links.show'), card_path(card) %></td>
+        <td><%= link_to t('action_links.edit'), edit_card_path(card) %></td>
+        <td><%= link_to t('action_links.delete'), card_path(card), 
           method: :delete, 
-          data: { confirm: 'Уверен?' } %></td>
+          data: { confirm: t(:are_you_sure) } %></td>
     </tr>
   <% end %>
 </table>

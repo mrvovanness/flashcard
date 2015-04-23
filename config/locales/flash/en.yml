@@ -9,4 +9,5 @@ en:
   user_action_success: "Your information is successfully %{action}"
   user_action_error: "Your information is not %{action}. Check your enterings!"
   user_current_deck: "Current deck now is %{name_of_deck}"
-  user_current_deck_reset: Current deck is not set
+  user_current_deck_reset: "Current deck is not set"
+  are_you_sure: "Are you sure?"

@@ -27,6 +27,6 @@ class HomeController < ApplicationController
   private
 
   def check_params
-    params.permit(:card_id, :user_translation)
+    params.require(:check_data).permit(:card_id, :user_translation)
   end
 end

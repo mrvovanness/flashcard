@@ -14,7 +14,7 @@
     </div>
     <div class="col-md-3">
       <%= image_tag @card.picture_url(:thumb), class: "img-circle" %><br>
-      <%= link_to t(:edit), edit_card_path(@card.id) %>
+      <%= link_to t('action_links.edit'), edit_card_path(@card.id) %>
     </div>
   </section>
 </div>

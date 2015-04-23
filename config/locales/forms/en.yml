@@ -22,3 +22,5 @@ en:
         translated_text: "Enter translation for this"
         new_deck_name: "Enter name for new deck"
         remote_picture_url: "Paste link here"
+      check_data:
+        user_translation: "Put your translation here"

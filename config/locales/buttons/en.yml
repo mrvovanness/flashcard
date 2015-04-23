@@ -8,3 +8,5 @@ en:
       card:
         update: "Ok man!"
         create: "Create"
+      check_data:
+        submit: "Just check it!"

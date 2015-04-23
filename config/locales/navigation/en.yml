@@ -13,3 +13,9 @@ en:
   localebar:
     en: "en"
     ru: "ru"
+  action_links:
+    back: "Back"
+    show: "Show"
+    edit: "Edit"
+    delete: "Delete"
+    cancel: "Cancel"
