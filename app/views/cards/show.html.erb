@@ -1,16 +1,16 @@
 <div class="container">
   <section class="row">
     <div class="col-md-3">
-      <b><%= t :original %></b>
+      <b><%= t ('.original_text') %></b>
       <h4><%= @card.original_text %></h4>
     </div>
     <div class="col-md-3">
-      <b><%= t :translation %></b>
+      <b><%= t('.translated_text') %></b>
       <h4><%= @card.translated_text %></h4>
     </div>
     <div class="col-md-3">
-      <b><%= t :review_date %></b>
-      <h4><%= @card.review_date %></h4>
+      <b><%= t('.review_date') %></b>
+      <h4><%= l(@card.review_date, format: '%-d %B %H:%M') %></h4>
     </div>
     <div class="col-md-3">
       <%= image_tag @card.picture_url(:thumb), class: "img-circle" %><br>

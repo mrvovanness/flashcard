@@ -1,0 +1,26 @@
+ru:
+  simple_form:
+    labels:
+      user:
+        email: "Почта"
+        password: "Пароль"
+        password_confirmation: "Повтори пароль"
+        locale: "Выбери язык"
+      card:
+        original_text: "Слово или текст"
+        translated_text: "Перевод"
+        deck: "Выбери колоду для карточки"
+        picture: "Картинка для карточки (не обязательно)"
+        remote_picture_url: "Или загрузи картинку из Интернета"
+    placeholders:
+      user:
+        email: "Введи реальный адрес почты" 
+        password: "4 знака минимум"
+        password_confirmation: "Повтори тоже самое"
+      card:
+        original_text: "Введи слово или текст"
+        translated_text: "Введи перевод"
+        new_deck_name: "Введи название для колоды"
+        remote_picture_url: "Вставь ссылку"
+      check_data:
+        user_translation: "Твой перевод здесь"

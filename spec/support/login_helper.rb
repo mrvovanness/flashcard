@@ -1,6 +1,6 @@
 def login(email, password)
   visit root_path
-  fill_in :email, with: email
-  fill_in :password, with: password
-  click_button I18n.t(:login)
+  fill_in :user_email, with: email
+  fill_in :user_password, with: password
+  click_button "Log In"
 end

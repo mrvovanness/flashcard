@@ -7,6 +7,6 @@ en:
         submit: "Log In"
       card:
         update: "Ok man!"
-        create: "Create"
+        create: "Create pretty card"
       check_data:
         submit: "Just check it!"

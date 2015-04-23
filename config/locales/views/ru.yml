@@ -1,0 +1,23 @@
+ru:
+  cards:
+    index:
+      original_text: "Оригинал"
+      translated_text: "Перевод"
+      review_date: "Дата пересмотра"
+      card_count_label: "Всего карточек:"
+    edit:
+      enter_deck_name: "Введи название колоды"
+      new_deck: "Или создай новую колоду"
+      remove_current_picture: "Удалить картинку"
+      upload_picture_label: "Загрузи свою картинку (если хочешь)"
+  decks:
+    index:
+      deck_name: "Название колоды"
+      reset_current_deck: "Сбросить текущую колоду"
+      current_deck: "Текущая колода"
+      set_as_current: "Установить текущей"
+  home:
+    index:
+      lead: "Первый и лучший! Именно так..."
+      not_set: "не установлена"
+      no_cards_for_review: "No cards for review"

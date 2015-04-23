@@ -12,3 +12,9 @@ ru:
   localebar:
     en: "en"
     ru: "ru"
+  action_links:
+    back: "Назад"
+    show: "Показать"
+    edit: "Редактировать"
+    delete: "Удалить"
+    cancel: "Отменить"

@@ -1,0 +1,12 @@
+ru:
+  helpers:
+    submit:
+      user:
+        update: "Готово"
+        create: "Зарегистрировать"
+        submit: "Войти"
+      card:
+        update: "Да будет так"
+        create: "Создать карточку"
+      check_data:
+        submit: "Проверить"

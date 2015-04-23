@@ -8,7 +8,6 @@ en:
     edit:
       enter_deck_name: "Enter deck name"
       new_deck: "Or create new deck"
-      cancel: "Cancel"
       remove_current_picture: "Remove current picture"
       upload_picture_label: "Upload picture for your card (this is optional)"
   decks:
@@ -21,6 +20,4 @@ en:
     index:
       lead: "The first in the world! Exactly so..."
       not_set: "not set"
-      check_translation: "Try to Translate"
-      try_it: "Try It"
       no_cards_for_review: "No cards for review"
