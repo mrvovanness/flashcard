@@ -1,22 +1,22 @@
 <%= simple_form_for card, html: { multipart: true } do |f| %>
   <div class="col-md-6">
-    <%= f.input :original_text, label: t(:word_or_text), placeholder: t(:enter_word_prompt), input_html: { class: "form-control" } %> 
-    <%= f.input :translated_text, label: t(:translation), placeholder: t(:enter_translation), input_html: { class: "form-control" } %><br>
-    <%= f.association :deck, collection: current_user.decks.all, label: t(:deck), include_blank: false  %>
-    <a id="new_deck_target" class="card_deck"><%= t :new_deck %></a>
-    <%= text_field_tag "new_deck_name", nil, placeholder: t(:enter_deck_name), class: "form-control card_deck", style: "display: none;" %>
+    <%= f.input :original_text, input_html: { class: "form-control" } %> 
+    <%= f.input :translated_text, input_html: { class: "form-control" } %><br>
+    <%= f.association :deck, collection: current_user.decks.all, include_blank: false %>
+    <a id="new_deck_target" class="card_deck"><%= t('cards.edit.new_deck') %></a>
+    <%= text_field_tag "new_deck_name", nil, placeholder: t('cards.edit.enter_deck_name'), class: "form-control card_deck", style: "display: none;" %>
     <a id="cancel_new_deck" class="card_deck" style="display: none;"><%= t :cancel %></a>
   </div>
   <div class="col-md-6">
     <% if card.picture? %>
       <%= image_tag card.picture_url(:thumb), class: "img-thumbnail" %><br>
       <%= f.check_box :remove_picture %>
-      <b><%= t :remove_current_picture %></b><br>
+      <b><%= t('cards.edit.remove_current_picture') %></b><br>
     <% end %>
     <label><%= t :upload_picture_label %></label>
     <%= f.file_field :picture %><br>
     <%= f.hidden_field :picture_cache %>
-    <%= f.input :remote_picture_url, label: t(:upload_picture_from_web_label), placeholder: t(:add_link_placeholder), input_html: { class: "form-control" } %><br>
-    <%= f.button :submit, t(:save),  class: "btn-primary" %>
+    <%= f.input :remote_picture_url, input_html: { class: "form-control" } %><br>
+    <%= f.button :submit, class: "btn-primary" %>
   </div>
 <% end %>

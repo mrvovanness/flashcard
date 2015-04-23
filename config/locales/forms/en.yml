@@ -1,0 +1,24 @@
+en:
+  simple_form:
+    labels:
+      user:
+        email: "Your Email"
+        password: "Password"
+        password_confirmation: "Retype Your Password"
+        locale: "Your Language"
+      card:
+        original_text: "Word or Text"
+        translated_text: "Translation"
+        deck: "Choose deck for your card"
+        picture: "Upload picture (it's optional)"
+        remote_picture_url: "Or upload picture from web"
+    placeholders:
+      user:
+        email: "Real email please" 
+        password: "4 characters min"
+        password_confirmation: "just ensure you remembered"
+      card:
+        original_text: "Enter Word or Text"
+        translated_text: "Enter translation for this"
+        new_deck_name: "Enter name for new deck"
+        remote_picture_url: "Paste link here"

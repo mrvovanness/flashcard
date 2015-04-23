@@ -1,8 +1,8 @@
 <table class="table table-striped">
   <tr>
-    <th><%= t :deck_name %></th>
+    <th><%= t ('.deck_name ') %></th>
     <th>
-          <%= link_to t(:reset_current_deck),  reset_current_deck_path, method: :delete %>
+          <%= link_to t('.reset_current_deck'),  reset_current_deck_path, method: :delete %>
     </th>
   </tr>
   <% @decks.each do |deck| %>
@@ -10,9 +10,9 @@
       <td><%= deck.name %></td>
       <td>
         <% if deck.current? %>
-          <b><%= t(:current_deck) %></b>
+          <b><%= t('.current_deck') %></b>
         <% else %>
-          <%= link_to t(:set_as_current),  set_current_deck_path(deck_id: deck.id), method: :put %>
+          <%= link_to t('.set_as_current'),  set_current_deck_path(deck_id: deck.id), method: :put %>
         <% end %>
       </td> 
     </tr>

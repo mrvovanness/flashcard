@@ -1,0 +1,10 @@
+en:
+  helpers:
+    submit:
+      user:
+        update: "Ready"
+        create: "Create me"
+        submit: "Log In"
+      card:
+        update: "Ok man!"
+        create: "Create"

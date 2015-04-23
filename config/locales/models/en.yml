@@ -1,0 +1,26 @@
+en:
+  cards:
+    index:
+      original_text: "Original Text"
+      translated_text: "Translation"
+      review_date: "Review_date"
+      card_count_label: "Total amount of cards"
+    edit:
+      enter_deck_name: "Enter deck name"
+      new_deck: "Or create new deck"
+      cancel: "Cancel"
+      remove_current_picture: "Remove current picture"
+      upload_picture_label: "Upload picture for your card (this is optional)"
+  decks:
+    index:
+      deck_name: "Deck name"
+      reset_current_deck: "Reset current deck"
+      current_deck: "Current deck"
+      set_as_current: "Set as current"
+  home:
+    index:
+      lead: "The first in the world! Exactly so..."
+      not_set: "not set"
+      check_translation: "Try to Translate"
+      try_it: "Try It"
+      no_cards_for_review: "No cards for review"

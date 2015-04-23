@@ -6,12 +6,12 @@ class UserSessionsController < ApplicationController
   end
 
   def create
-    if @user = login(params[:email], params[:password])
+    if @user = login(user_params[:email], user_params[:password])
       flash[:success] = t(:user_action_success, action: "entered")
       redirect_to root_path
     else
       flash[:danger] = t(:user_action_error, action: "correct")
-      render "new"
+      redirect_to :back
     end
   end
 
@@ -19,5 +19,11 @@ class UserSessionsController < ApplicationController
     logout
     flash[:info] = t(:logout_alert)
     redirect_to login_path
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :password)
   end
 end
