@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-  <title><%= t :logo %></title>
+  <title><%= t('mainbar.logo') %></title>
   <%= stylesheet_link_tag 'application' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tag %>
@@ -11,22 +11,22 @@
     <div class="row">
       <% if current_user %>
         <div class="col-md-6">
-          <%= link_to t(:decks_management), decks_path %>
+          <%= link_to t('upperbar.decks_settings'), decks_path %>
           |
-          <%= link_to t(:profile_settings), user_profile_path %>
+          <%= link_to t('upperbar.user_settings'), user_profile_path %>
           |
-          <%= link_to t(:log_out), logout_path, method: :destroy %>
+          <%= link_to t('upperbar.logout'), logout_path, method: :destroy %>
         </div>
       <% else %>
         <div class="col-md-6">
-          <%= link_to t(:sign_up), signup_path %>
+          <%= link_to t('upperbar.signup'), signup_path %>
           |
-          <%= link_to t(:log_in), login_path %>
+          <%= link_to t('upperbar.login'), login_path %>
         </div>
         <div class="col-md-6">
-          <%= link_to "EN", change_locale_path(:en) %>
+          <%= link_to t('localebar.en'), login_path(locale: :en) %>
           |
-          <%= link_to "RU", change_locale_path(:ru) %>
+          <%= link_to t('localebar.ru'), login_path(locale: :ru) %>
         </div>
       <% end %>
     </div>
@@ -34,15 +34,15 @@
       <div class="container-fluid">
         <div class="navbar-header">
           <h1 class="navbar-brand">
-            <%= link_to t(:logo), root_path %>
+            <%= link_to t('mainbar.logo'), root_path %>
           </h1>
         </div>
           <ul class="nav navbar-right">
             <li>
-              <%= link_to t(:all_cards), cards_path %>
+              <%= link_to t('mainbar.all_cards'), cards_path %>
             </li>
             <li>
-              <%= link_to t(:add_card), new_card_path %>
+              <%= link_to t('mainbar.add_card'), new_card_path %>
             </li>
           </ul>
       </div>

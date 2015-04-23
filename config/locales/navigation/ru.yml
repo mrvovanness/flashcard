@@ -1,0 +1,14 @@
+ru:
+  mainbar:
+    logo: "Флэшкарточкер"
+    all_cards: "Все карточки"
+    add_card: "Добавить карточку"
+  upperbar:
+    decks_settings: "Управление колодами"
+    user_settings: "Настройки профиля"
+    login: "Войти"
+    logout: "Выйти"
+    signup: "Зарегистрироваться"
+  localebar:
+    en: "en"
+    ru: "ru"

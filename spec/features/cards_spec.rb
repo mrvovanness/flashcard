@@ -2,12 +2,13 @@ require "support/login_helper"
 require "rails_helper"
 
 describe "User do specific actions:" do
-  let!(:user) { create(:user, locale: "ru") }
+  let!(:user) { create(:user) }
   let!(:card) { create(:card) }
   let!(:deck) { create(:deck) }
   before(:each) do
     login("ex@mail.com", "1111")
     card.update_attribute(:review_date, Date.today - 1.day)
+    user.update_attribute(:locale, "ru")
   end
 
   context "checks translations -" do

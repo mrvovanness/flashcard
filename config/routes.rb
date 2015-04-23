@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   get 'user_profile' => 'user_profile#edit'
   patch 'user_profile' => 'user_profile#update'
-  get 'change_locale/:locale' => 'locales#update', as: :change_locale
   
   get 'login' => 'user_sessions#new', :as => :login
   get 'signup' => 'user_registration#new', :as => :signup

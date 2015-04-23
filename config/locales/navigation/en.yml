@@ -1,0 +1,15 @@
+en:
+  mainbar:
+    logo: "Flashcarder"
+    all_cards: "All Cards"
+    add_card: "Add Card"
+  upperbar:
+    decks_settings: "Decks settings"
+    user_settings: "Profile settings"
+    login: "Log In"
+    logout: "Log Out"
+    signin: "Sign In"
+    signup: "Sign Up"
+  localebar:
+    en: "en"
+    ru: "ru"
