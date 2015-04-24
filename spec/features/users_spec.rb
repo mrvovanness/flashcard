@@ -18,7 +18,8 @@ describe "User" do
     end
     it "with correct review date" do
       expect(page).to have_content "#{ I18n.l(
-      DateTime.now.in_time_zone('UTC'), format: '%-d %B %H:%M')}"
+      DateTime.now.in_time_zone('UTC'),
+      format: '%-d %B %H:%M')}"
     end
   end
   context "changes language" do

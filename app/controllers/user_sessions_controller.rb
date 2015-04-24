@@ -7,17 +7,19 @@ class UserSessionsController < ApplicationController
 
   def create
     if @user = login(user_params[:email], user_params[:password])
-      flash[:success] = t(:user_action_success, action: "entered")
+      flash[:success] = t('user.success',
+                          action: t('action.enter'))
       redirect_to root_path
     else
-      flash[:danger] = t(:user_action_error, action: "correct")
+      flash[:danger] = t('user.error',
+                         action: t('action.correct'))
       redirect_to :back
     end
   end
 
   def destroy
     logout
-    flash[:info] = t(:logout_alert)
+    flash[:info] = t('user.logout')
     redirect_to login_path
   end
 

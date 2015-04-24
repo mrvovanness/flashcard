@@ -10,6 +10,10 @@ en:
       new_deck: "Or create new deck"
       remove_current_picture: "Remove current picture"
       upload_picture_label: "Upload picture for your card (this is optional)"
+    show:
+      original_text: "Original Text"
+      translated_text: "Translation"
+      review_date: "Review_date"
   decks:
     index:
       deck_name: "Deck name"

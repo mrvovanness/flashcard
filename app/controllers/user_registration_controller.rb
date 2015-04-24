@@ -8,11 +8,13 @@ class UserRegistrationController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = t(:user_action_success, action: "saved")
+      flash[:success] = t('user.success',
+                          action: t('action.save'))
       auto_login(@user)
       redirect_to root_path
     else
-      flash[:warning] = t(:user_action_error, action: "saved")
+      flash[:warning] = t('user.error',
+                          action: t('action.save'))
       render "new"
     end
   end

@@ -18,20 +18,24 @@ class CardsController < ApplicationController
   def create
     @card = current_user.cards.new(card_params)
     if @card.save
-      flash[:info] = t(:card_action_success, action: "created") + @card.deck.name
+      flash[:info] = t('card.success',
+                       action: t('action.create'),
+                       deck: @card.deck.name)
       redirect_to @card
     else
-      flash[:danger] = t(:card_action_error)
+      flash[:danger] = t('card.error')
       render "new"
     end
   end
 
   def update
     if @card.update(card_params)
-      flash[:info] = t(:card_action_success, action: "updated") + @card.deck.name
+      flash[:info] = t('card.success',
+                       action: t('action.update'),
+                       deck: @card.deck.name)
       redirect_to @card
     else
-      flash[:danger] = t(:card_action_error)
+      flash[:danger] = t('card.error')
       render "edit"
     end
   end

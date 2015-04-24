@@ -13,7 +13,8 @@ class ApplicationController < ActionController::Base
              elsif session[:locale]
                session[:locale]
              else
-               http_accept_language.compatible_language_from(I18n.available_locales)
+               http_accept_language.compatible_language_from(
+                 I18n.available_locales)
              end
     if locale && I18n.available_locales.include?(locale.to_sym)
       I18n.locale = locale.to_sym
@@ -23,7 +24,7 @@ class ApplicationController < ActionController::Base
   private
 
   def not_authenticated
-    flash[:warning] = t(:login_alert)
+    flash[:warning] = t('user.login')
     redirect_to login_path
   end
 end

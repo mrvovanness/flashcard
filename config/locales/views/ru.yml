@@ -10,6 +10,10 @@ ru:
       new_deck: "Или создай новую колоду"
       remove_current_picture: "Удалить картинку"
       upload_picture_label: "Загрузи свою картинку (если хочешь)"
+    show:
+      original_text: "Оригинал"
+      translated_text: "Перевод"
+      review_date: "Дата пересмотра"
   decks:
     index:
       deck_name: "Название колоды"
