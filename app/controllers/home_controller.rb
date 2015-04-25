@@ -15,7 +15,7 @@ class HomeController < ApplicationController
       flash[:success] = t('card.check_success')
     when 1, 2 then
       flash[:warning] = t('card.typos',
-                          name_of_right_card: @card.original_text,
+                          right_card: @card.original_text,
                           typed_word: check_params[:user_translation])
     else
       flash[:warning] = t('card.check_error',

@@ -8,8 +8,8 @@ ru:
     success: "Ты {%action} карточу в колоде "
     error: "Что-то пошло не так. Попробуй еще раз!"
     check_success: "Правильный ответ!"
-    check_error: "Неправильно! Правильный ответ был %{name_of_right_card}"
-    typos: "Возможно, произошла ошибка.<b>Правильный ответ %{name_of_right_card).<br>Ты написал %{user_typed_word}."
+    check_error: "Неправильно! Правильный ответ был %{right_card}"
+    typos: "Возможно, произошла ошибка.<b>Правильный ответ %{right_card).<br>Ты написал %{user_typed_word}."
     delete: "Уверен?"
   deck:
     current: "Текущая колода теперь %{name_of_deck}"

@@ -9,7 +9,7 @@ en:
     error: "Something went wrong. Try again!"
     check_success: "This is right!"
     check_error: "Wrong! The right answer was %{right_card}"
-    typos: "Perhaps, some typo occured.<br>The right answer is %{name_of_right_card}.<br>You wrote %{typed_word}."
+    typos: "Perhaps, some typo occured.<br>The right answer is %{right_card}.<br>You wrote %{typed_word}."
     delete: "Are you sure?"
   deck:
     current: "Current deck now is %{name_of_deck}"

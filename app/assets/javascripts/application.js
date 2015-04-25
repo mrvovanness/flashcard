@@ -23,5 +23,10 @@ function documentReady() {
   $("#new_deck_target, #cancel_new_deck").click(function() {
     $(".card_deck").toggle();
   });
-}
 
+  setTimeout(function() {
+    $("#flash-wrapper").fadeOut("slow", function() {
+      $(this).remove();
+    })
+  }, 4500 );
+};
