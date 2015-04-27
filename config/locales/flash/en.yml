@@ -7,7 +7,8 @@ en:
   card:
     success: "You just %{action} card in %{deck} deck"
     error: "Something went wrong. Try again!"
-    check_success: "This is right!"
+    check_success: "This is perfect!"
+    check_delay: "This is right, but you are so long to respond"
     check_error: "Wrong! The right answer was %{right_card}"
     typos: "Perhaps, some typo occured.<br>The right answer is %{right_card}.<br>You wrote %{typed_word}."
     delete: "Are you sure?"

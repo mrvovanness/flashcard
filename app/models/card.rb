@@ -27,10 +27,13 @@ class Card < ActiveRecord::Base
   end
 
   def check_translation(card, user_translation, response_time)
-    data = TranslationVerificator.new(card, user_translation, response_time).result
-    update_attributes(review_date: data[:review_date],
-                      number_of_reviews: data[:number_of_reviews],
-                      review_date: data[:review_date],
-                      interval: data[:interval])
+    data = TranslationVerificator.new(card,
+                                      user_translation,
+                                      response_time).result
+    update_attributes(review_date: data[:calculated_review_date],
+                      number_of_reviews: data[:calculated_number_of_reviews],
+                      e_factor: data[:calculated_e_factor],
+                      interval: data[:calculated_interval])
+    data
   end
 end

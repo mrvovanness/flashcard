@@ -9,11 +9,15 @@ class HomeController < ApplicationController
 
   def check_card
     @card = Card.find(check_params[:card_id])
-    result = @card.check_translation(@card, check_params[:user_translation])
-    case result[:typos_count]
-    when 0 then
+    result = @card.check_translation(@card,
+                                     check_params[:user_translation],
+                                     check_params[:response_time])
+    case result[:assession_mark]
+    when 5 then
       flash[:success] = t('card.check_success')
-    when 1, 2 then
+    when 4, 3 then
+      flash[:warning] = t('card.check_delay')
+    when 2 then
       flash[:warning] = t('card.typos',
                           right_card: @card.original_text,
                           typed_word: check_params[:user_translation])
