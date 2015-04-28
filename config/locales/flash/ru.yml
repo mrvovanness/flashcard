@@ -10,7 +10,7 @@ ru:
     check_success: "Правильный ответ!"
     check_delay: "Это правильный ответ, но ты долго думаешь!"
     check_error: "Неправильно! Правильный ответ был %{right_card}"
-    typos: "Возможно, произошла ошибка.<b>Правильный ответ %{right_card).<br>Ты написал %{user_typed_word}."
+    typos: "Возможно, произошла ошибка.<b>Правильный ответ %{right_card).<br>Ты написал %{typed_word}."
     delete: "Уверен?"
   deck:
     current: "Текущая колода теперь %{name_of_deck}"

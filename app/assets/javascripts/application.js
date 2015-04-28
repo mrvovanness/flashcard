@@ -29,4 +29,11 @@ function documentReady() {
       $(this).remove();
     })
   }, 4500 );
+ 
+  setInterval(function() {myTimer()}, 1000);
+  var seconds = 0;
+  function myTimer() {
+    $("#timer").text(seconds);
+    seconds ++;
+  };
 };

@@ -13,6 +13,8 @@ class TranslationVerificator
       calculated_interval: calculate_interval }
   end
 
+  private
+
   def calculate_number_of_reviews
     case assess_quality
     when 3, 4, 5 then @card.number_of_reviews += 1
@@ -40,7 +42,6 @@ class TranslationVerificator
   end
 
   def calculate_interval
-      (calculate_review_date.to_date - DateTime.now.to_date).to_i
+    (calculate_review_date.to_date - Date.today).to_i
   end
-
 end

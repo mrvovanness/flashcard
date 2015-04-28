@@ -21,7 +21,7 @@ class QualityAssessor
   def response_time_assessor
     case @response_time
     when 0..20 then 5
-    when 21..31 then 4
+    when 21..30 then 4
     else 3
     end
   end

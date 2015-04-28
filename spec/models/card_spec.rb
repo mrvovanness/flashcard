@@ -3,94 +3,73 @@ require 'rails_helper'
 describe Card do
   let! (:card) { create(:card) }
 
-  context "/successfull check" do
-    it "/first, with perfect_timing" do
+  context "review date shifts" do
+    it "1 day after first excellent answer" do
       card.check_translation(card, "Mantle", 10)
       expect(card.interval).to be 1
     end
 
-    it "/second, with perfect_timing" do
+    it "6 days after second excellent answer" do
       2.times do 
         card.check_translation(card, "Mantle", 10)
       end
       expect(card.interval).to be 6
     end
 
-    it "/second, with perfect_timing" do
+    it "16 days after third excellent answer" do
       3.times do 
         card.check_translation(card, "Mantle", 10)
       end
-      expect(card.review_date.to_date).to eq
-      DateTime.now.in_time_zone('UTC').to_date + 16.days
+      expect(card.interval).to be 16
+    end
+
+    it "15 days after third answer with time delaying" do
+      3.times do
+        card.check_translation(card, "Mantle", 25)
+      end
+      expect(card.interval).to be 15
+    end
+
+    it "back if typos or errors occur" do
+      4.times do
+        card.check_translation(card, "Mantle", 10)
+      end
+      card.check_translation(card, "Montle", 10)
+      expect(card.interval). to be 0
     end
   end
-#  it "check mathing words regardless language and case" do
-#    result = card.check_translation("mANtlE")
-#    expect(result[:typos_count]).to be 0
-#  end
-#
-#  it "check unmatching words" do
-#    result = card.check_translation("future")
-#    expect(result[:typos_count]).to be 5
-#  end
-#
-#  it "pass nonequal words" do
-#    expect(card.errors.any?).to be false
-#  end
-#
-#  it "don't pass equal words" do
-#    card = Card.create(original_text: "Fall", translated_text: "Fall")
-#    expect(card.errors.any?).to be true
-#  end
-#
-#  context "update review date" do
-#
-#    it "and decrease number of cards" do
-#      succ_card = Card.pending.first
-#      expect {
-#        succ_card.check_translation(succ_card.original_text)
-#      }.to change { Card.pending.count }.by(-1)
-#    end
-#
-#    it "on 12 hour after first check" do
-#      expect { card.check_translation(card.original_text) }.to change {
-#        card.review_date.beginning_of_hour
-#      }.by(12.hours)
-#    end
-#
-#    it "on 3 days after second check" do
-#      card.update_attribute(:number_of_reviews, 1)
-#      expect { card.check_translation(card.original_text) }.to change {
-#        card.review_date.beginning_of_day
-#      }.by(3.days)
-#    end
-#
-#    it "on 1 week after third check" do
-#      card.update_attribute(:number_of_reviews, 2)
-#      expect { card.check_translation(card.original_text) }.to change {
-#        card.review_date.beginning_of_week
-#      }.by(1.week)
-#    end
-#
-#    it "on 2 week after forth check" do
-#      card.update_attribute(:number_of_reviews, 3)
-#      expect { card.check_translation(card.original_text) }.to change {
-#        card.review_date.beginning_of_week
-#      }.by(2.week)
-#    end
-#
-#    it "on a month after fifth check" do
-#      card.update_attribute(:number_of_reviews, 4)
-#      expect { card.check_translation(card.original_text) }.to change {
-#        card.review_date.beginning_of_month
-#      }.by(1.months)
-#    end
-#    it "on a 12 hours from high level if three errors occurs" do
-#      card.update_attributes(number_of_reviews: 4)
-#      card.check_translation("bad staff")
-#      card.check_translation("bad staff")
-#      card.check_translation("bad staff")
-#      expect(card.number_of_reviews).to eq (0)
-#    end
-#  end
+
+  context "number of reviews shifts" do
+    before(:each) do
+      15.times do
+        card.check_translation(card, "Mantle", 10)
+      end
+    end
+    it "as count if no errors done" do
+      expect(card.number_of_reviews).to be 15
+    end
+
+    it "back if any error done" do
+      card.check_translation(card, "wrong_stuff", 10)
+      expect(card.number_of_reviews).to be 0
+    end
+  end
+
+  context "e-factor shifts" do
+    it "higher if right answers" do
+      first_value = card.e_factor
+      15.times do
+        card.check_translation(card, "Mantle", 10)
+      end
+      expect(card.e_factor).to be > first_value
+    end
+
+    it "lower if wrong answers" do
+      first_value = card.e_factor
+      15.times do
+        card.check_translation(card, "wrong_stuff", 10)
+      end
+      expect(card.e_factor).to be < first_value
+    end
+  end
 end
