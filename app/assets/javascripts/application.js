@@ -33,7 +33,7 @@ function documentReady() {
   setInterval(function() {myTimer()}, 1000);
   var seconds = 0;
   function myTimer() {
-    $("#timer").text(seconds);
+    $("#timer").val(seconds);
     seconds ++;
   };
 };

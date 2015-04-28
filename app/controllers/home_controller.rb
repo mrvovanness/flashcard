@@ -31,6 +31,6 @@ class HomeController < ApplicationController
   private
 
   def check_params
-    params.require(:check_data).permit(:card_id, :user_translation)
+    params.require(:check_data).permit(:card_id, :user_translation, :response_time)
   end
 end
