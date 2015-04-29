@@ -9,8 +9,7 @@ class HomeController < ApplicationController
 
   def check_card
     @card = Card.find(check_params[:card_id])
-    result = @card.check_translation(@card,
-                                     check_params[:user_translation],
+    result = @card.check_translation(check_params[:user_translation],
                                      check_params[:response_time])
     case result[:assession_mark]
     when 5 then
@@ -31,6 +30,8 @@ class HomeController < ApplicationController
   private
 
   def check_params
-    params.require(:check_data).permit(:card_id, :user_translation, :response_time)
+    params.require(:check_data).permit(:card_id,
+                                       :user_translation,
+                                       :response_time)
   end
 end

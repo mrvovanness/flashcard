@@ -1,18 +1,18 @@
 class QualityAssessor
-  def initialize(response_time, user_translation, card)
+  def initialize(response_time, user_translation, original_text)
     @response_time = response_time
     @user_translation = user_translation
-    @card = card
+    @original_text = original_text
   end
 
   def result
     typos_count = DamerauLevenshtein.distance(
-      @card.original_text.mb_chars.downcase.strip,
+      @original_text.mb_chars.downcase.strip,
       @user_translation.mb_chars.downcase.strip, 0)
     case typos_count
-    when 1,2 then 2 
-    when 0 then [5, response_time_assessor].min
-    else [1, response_time_assessor_for_fail].min
+    when 1, 2 then 2 
+    when 0    then [5, response_time_assessor].min
+    else           [1, response_time_assessor_for_incorrect_translation].min
     end
   end
 
@@ -26,9 +26,9 @@ class QualityAssessor
     end
   end
 
-  def response_time_assessor_for_fail
+  def response_time_assessor_for_incorrect_translation
     case @response_time
-    when 00..40 then 1
+    when 0..40 then 1
     else 0
     end
   end

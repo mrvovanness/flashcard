@@ -27,7 +27,7 @@ function documentReady() {
   setTimeout(function() {
     $("#flash-wrapper").fadeOut("slow", function() {
       $(this).remove();
-    })
+    });
   }, 4500 );
  
   setInterval(function() {myTimer()}, 1000);
@@ -35,5 +35,5 @@ function documentReady() {
   function myTimer() {
     $("#timer").val(seconds);
     seconds ++;
-  };
-};
+  }
+}

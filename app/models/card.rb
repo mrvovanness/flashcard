@@ -26,14 +26,9 @@ class Card < ActiveRecord::Base
     self.review_date = DateTime.now
   end
 
-  def check_translation(card, user_translation, response_time)
-    data = TranslationVerificator.new(card,
-                                      user_translation,
-                                      response_time).result
-    update_attributes(review_date: data[:calculated_review_date],
-                      number_of_reviews: data[:calculated_number_of_reviews],
-                      e_factor: data[:calculated_e_factor],
-                      interval: data[:calculated_interval])
-    data
+  def check_translation(user_translation, response_time)
+    data = TranslationVerificator.new(self, user_translation, response_time)
+    update_attributes(data.result)
+    { assession_mark: data.assess_quality }
   end
 end
