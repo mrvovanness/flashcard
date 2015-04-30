@@ -3,9 +3,9 @@ require 'rails_helper'
 describe "TranslationVerificator" do
   let! (:card) { create(:card) }
     before (:each) do
-    user_translation = "Mantle"
-    response_time = 10
-    @results_hash = TranslationVerificator.new(card, user_translation, response_time).result
+      user_translation = "Mantle"
+      response_time = 10
+      @results_hash = TranslationVerificator.new(card, user_translation, response_time).result
     end
 
   it "number of reviws changes" do

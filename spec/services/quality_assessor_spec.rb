@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 describe "QualityAssessor" do
-  before (:each) do
-  end
   it "excellent example" do
     response_time = 10
     user_translation = "Mantle"

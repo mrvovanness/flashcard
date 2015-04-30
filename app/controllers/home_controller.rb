@@ -18,7 +18,7 @@ class HomeController < ApplicationController
       flash[:warning] = t('card.check_delay')
     when 2 then
       flash[:warning] = t('card.typos',
-                          right_card: @card.original_text,
+                          correct_answer: @card.original_text,
                           typed_word: check_params[:user_translation])
     else
       flash[:warning] = t('card.check_error',
