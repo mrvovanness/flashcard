@@ -61,3 +61,4 @@ gem 'whenever', require: false
 gem 'http_accept_language'
 gem 'rails-i18n'
 gem 'interactive_editor', group: :development
+gem 'rollbar', '~> 1.5.1'
