@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe Card do
   let! (:card) { create(:card) }
-  it { puts card.original_text; puts card.translated_text }
 
   context "review date shifts" do
     it "1 day after first excellent answer" do
