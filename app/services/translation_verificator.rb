@@ -1,3 +1,4 @@
+#Together with QualityAssessor implements SuperMemo algorithm created by P.A.Wozniak: http://www.supermemo.com/english/ol/sm2.htm
 class TranslationVerificator
   def initialize(card, user_translation, response_time)
     @response_time = response_time

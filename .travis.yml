@@ -5,4 +5,4 @@ before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
 # uncomment this line if your project needs to run something other than `rake`:
-  - bundle exec rspec --format documentation --pattern spec/**/*_spec.rb
+  - bundle exec rspec --format documentation

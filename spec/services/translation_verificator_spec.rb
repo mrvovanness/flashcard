@@ -17,7 +17,7 @@ describe "TranslationVerificator" do
   end
 
   it "e-factor changes" do
-    expect(@results_hash[:e_factor]).to be 2.5 + (0.1 - (5 - 5) * (0.08 + (5 - 5) * 0.02))
+    expect(@results_hash[:e_factor]).to be 2.6
   end
   it "interval changes" do
     expect(@results_hash[:interval]).to be 1
