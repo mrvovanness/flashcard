@@ -78,7 +78,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Use Mandrill for mail delivery.
-  config.action_mailer.smpt_settings = {
+  config.action_mailer.smtp_settings = {
     address: "smtp.mandrillapp.com",
     port: 25,
     enable_starttls_auto: true,
