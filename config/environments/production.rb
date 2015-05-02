@@ -85,5 +85,5 @@ Rails.application.configure do
     user_name:  ENV['MANDRILL_USERNAME'],
     password: ENV['MANDRILL_PASSWORD'],
     authentication: "login",
-    domain: 'flashcard-app-sample.herokuapp.com' }
+    domain: ENV['DOMAIN'] }
 end
