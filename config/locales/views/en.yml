@@ -3,7 +3,7 @@ en:
     index:
       original_text: "Original Text"
       translated_text: "Translation"
-      review_date: "Review_date"
+      review_date: "Review Date"
       card_count_label: "Total amount of cards"
     edit:
       enter_deck_name: "Enter deck name"

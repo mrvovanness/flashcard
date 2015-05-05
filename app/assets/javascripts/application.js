@@ -12,14 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
 //= require bootstrap
 
-jQuery(document).on("ready page:change", function() { documentReady()
-});
-
-function documentReady() {
+$( document ).ready(function() {
   $("#new_deck_target, #cancel_new_deck").click(function() {
     $(".card_deck").toggle();
   });
@@ -29,11 +25,18 @@ function documentReady() {
       $(this).remove();
     });
   }, 4500 );
- 
-  setInterval(function() {myTimer()}, 1000);
+
+  i = setInterval(function() {myTimer()}, 1000);
   var seconds = 0;
   function myTimer() {
     $("#timer").val(seconds);
     seconds ++;
-  }
-}
+  };
+
+  $(document).on('ajax:complete', function(event) {
+    clearInterval(i);
+    seconds = 0
+    i = setInterval(function() {myTimer()}, 1000);
+    console.log(i);
+  });
+});
