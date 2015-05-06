@@ -11,24 +11,29 @@ class HomeController < ApplicationController
     respond_to do |format|
       case result[:assession_mark]
       when 5 then
-        flash[:success] = t('card.check_success')
-        format.js
+        msg = { alert: t('card.check_success') }
+        format.json { render json: msg }
       when 4, 3 then
-        flash[:warning] = t('card.check_delay')
-        format.js
+        msg = { alert: t('card.check_delay') }
+        format.json { render json: msg }
       when 2 then
-        flash[:warning] = t('card.typos',
-                            correct_answer: @card.original_text,
-                            typed_word: check_params[:user_translation])
-        format.js
+        msg = { alert: t('card.typos',
+                         correct_answer: card.original_text,
+                         typed_word: check_params[:user_translation]) }
+        format.json { render json: msg }
       else
-        flash[:warning] = t('card.check_error',
-                            right_card: @card.original_text)
-       format.js
+        msg = { alert: t('card.check_error', right_card: card.original_text)}
+        format.json { render json: msg }
       end
     end
   end
   
+  def render_new_form
+    respond_to do
+      format.js
+    end
+  end
+
   private
 
   def set_card_for_review

@@ -10,7 +10,7 @@
   <section id="main-container">
     <div class="row">
       <% if current_user %>
-        <div class="col-md-6">
+        <div id="upperbar" class="col-md-6">
           <%= link_to t('upperbar.decks_settings'), decks_path %>
           |
           <%= link_to t('upperbar.user_settings'), user_profile_path %>
@@ -51,12 +51,14 @@
       <div id="flash-wrapper" class="col-md-12">
         <% flash.each do |key, value| %>
           <div class="alert alert-<%= key %>" role="alert">
-            <%= value.html_safe %>
+            <%= value %>
           </div>
         <% end %>
       </div>
     </div>
-    <%= yield %>
+    <div id="main">
+      <%= yield %>
+    </div>
   </section>
 </body>
 </html>

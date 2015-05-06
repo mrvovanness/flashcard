@@ -20,8 +20,21 @@ $( document ).ready(function() {
     $(".card_deck").toggle();
   });
 
+  $("#check-button").click(function(event) {
+    event.preventDefault();
+    var params_array = $("#check_form").serializeArray();
+    var data = {}
+    for (i = 0; i < params_array.length; i++) {
+      data[params_array[i].name] = params_array[i].value;
+    };
+    $.post("/check", data, function(responseText) {
+      $("#flash-wrapper").html(responseText.alert); 
+      $.get("/set_card_for_review");
+    });
+  });
+
   setTimeout(function() {
-    $("#flash-wrapper").fadeOut("slow", function() {
+    $(" #flash-wrapper *").fadeOut("slow", function() {
       $(this).remove();
     });
   }, 4500 );
@@ -34,10 +47,14 @@ $( document ).ready(function() {
     console.log(seconds);
   };
 
-  $(document).on('ajax:complete', function(event) {
+  $(document).on('ajax:send', function(event) {
     clearInterval(i);
     seconds = 0
     i = setInterval(function() {myTimer()}, 1000);
-    console.log(i);
   });
 });
+//  $("#upperbar a").click(function(event) {
+//    event.preventDefault();
+//    $("#main").load(this.href + " #main *");
+//  });
+//
