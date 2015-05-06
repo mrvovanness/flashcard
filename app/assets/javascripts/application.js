@@ -31,6 +31,7 @@ $( document ).ready(function() {
   function myTimer() {
     $("#timer").val(seconds);
     seconds ++;
+    console.log(seconds);
   };
 
   $(document).on('ajax:complete', function(event) {
