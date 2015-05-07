@@ -15,46 +15,39 @@
 //= require_tree .
 //= require bootstrap
 
-$( document ).ready(function() {
+$(document).ready(function() {
   $("#new_deck_target, #cancel_new_deck").click(function() {
     $(".card_deck").toggle();
   });
 
-  $("#check-button").click(function(event) {
+  $(document).on("click", "#check-button", function(event) {
     event.preventDefault();
-    var params_array = $("#check_form").serializeArray();
+    var params_array = $("form").serializeArray();
     var data = {}
     for (i = 0; i < params_array.length; i++) {
       data[params_array[i].name] = params_array[i].value;
     };
     $.post("/check", data, function(responseText) {
-      $("#flash-wrapper").html(responseText.alert); 
-      $.get("/set_card_for_review");
+      console.log(data);
+      $("#flash_wrapper").html(responseText.alert); 
+      $("#card_check_form").load("/index" + " #card_check_form *");
     });
   });
 
   setTimeout(function() {
-    $(" #flash-wrapper *").fadeOut("slow", function() {
+    $(" #flash_wrapper *").fadeOut("slow", function() {
       $(this).remove();
     });
   }, 4500 );
 
-  i = setInterval(function() {myTimer()}, 1000);
+  setInterval(function() {myTimer()}, 1000);
   var seconds = 0;
   function myTimer() {
     $("#timer").val(seconds);
     seconds ++;
-    console.log(seconds);
   };
 
-  $(document).on('ajax:send', function(event) {
-    clearInterval(i);
+  $(document).on("ajaxComplete", function() {
     seconds = 0
-    i = setInterval(function() {myTimer()}, 1000);
   });
 });
-//  $("#upperbar a").click(function(event) {
-//    event.preventDefault();
-//    $("#main").load(this.href + " #main *");
-//  });
-//

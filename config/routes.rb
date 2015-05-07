@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
   post 'check' => 'home#check_card'
-  get 'set_card_for_review' => 'home#set_card_for_review'
+  get 'index' => 'home#index'
 
   resources :cards, :decks
   resources :user_sessions, only: [:new, :create, :destroy]

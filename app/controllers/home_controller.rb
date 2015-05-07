@@ -22,16 +22,14 @@ class HomeController < ApplicationController
                          typed_word: check_params[:user_translation]) }
         format.json { render json: msg }
       else
-        msg = { alert: t('card.check_error', right_card: card.original_text)}
+        msg = { alert: "<div class="alert-info">#{t('card.check_error', right_card: card.original_text)}</div>" }
         format.json { render json: msg }
       end
     end
   end
   
   def render_new_form
-    respond_to do
-      format.js
-    end
+    render "_form"
   end
 
   private

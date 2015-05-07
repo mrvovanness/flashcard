@@ -48,9 +48,9 @@
       </div>
     </nav>
     <div class="row">
-      <div id="flash-wrapper" class="col-md-12">
+      <div id="flash_wrapper" class="col-md-12">
         <% flash.each do |key, value| %>
-          <div class="alert alert-<%= key %>" role="alert">
+          <div class="alert alert-<%= key %>">
             <%= value %>
           </div>
         <% end %>
