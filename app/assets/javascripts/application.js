@@ -22,16 +22,16 @@ $(document).ready(function() {
 
   $(document).on("click", "#check-button", function(event) {
     event.preventDefault();
-    var params_array = $("form").serializeArray();
+    var params_array = $("#check_form").serializeArray();
     var data = {}
     for (i = 0; i < params_array.length; i++) {
       data[params_array[i].name] = params_array[i].value;
     };
     $.post("/check", data, function(responseText) {
-      console.log(data);
+      console.log(responseText);
       $("#flash_wrapper").html(responseText.alert); 
-      $("#card_check_form").load("/index" + " #card_check_form *");
-    });
+      $("#check_form").load("/index" + " #check_form *");
+    }, "json");
   });
 
   setTimeout(function() {
@@ -48,6 +48,6 @@ $(document).ready(function() {
   };
 
   $(document).on("ajaxComplete", function() {
-    seconds = 0
+    seconds = 0;
   });
 });
