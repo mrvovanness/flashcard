@@ -22,32 +22,33 @@ $(document).ready(function() {
 
   $(document).on("click", "#check-button", function(event) {
     event.preventDefault();
-    var params_array = $("#check_form").serializeArray();
-    var data = {}
-    for (i = 0; i < params_array.length; i++) {
-      data[params_array[i].name] = params_array[i].value;
-    };
+    var paramsArray = $("#check_form").serializeArray();
+    var data = {};
+    for (i = 0; i < paramsArray.length; i++) {
+      data[paramsArray[i].name] = paramsArray[i].value;
+    }
     $.post("/check", data, function(responseText) {
-      console.log(responseText);
       $("#flash_wrapper").html(responseText.alert); 
       $("#check_form").load("/index" + " #check_form *");
     }, "json");
   });
 
-  setTimeout(function() {
+  setTimeout(function() {hideAlert() }, 4500);
+  function hideAlert() {
     $(" #flash_wrapper *").fadeOut("slow", function() {
       $(this).remove();
     });
-  }, 4500 );
+  }
 
-  setInterval(function() {myTimer()}, 1000);
+  setInterval(function() {myTimer() }, 1000);
   var seconds = 0;
   function myTimer() {
     $("#timer").val(seconds);
     seconds ++;
-  };
+  }
 
   $(document).on("ajaxComplete", function() {
     seconds = 0;
+    setTimeout(function() {hideAlert() }, 5000);
   });
 });

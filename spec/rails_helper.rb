@@ -4,6 +4,7 @@ require 'spec_helper'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'capybara/rails'
+require 'capybara/poltergeist'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -19,7 +20,7 @@ require 'capybara/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
@@ -50,6 +51,24 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 end
 
+Capybara.javascript_driver = :poltergeist
 Capybara.configure do |config|
   config.ignore_hidden_elements = false
 end
+
+# Use shared connection with transactional fixtures
+# Alternatively you can use_transactional_fixtures = false and use database cleaners
+# http://blog.plataformatec.com.br/2011/12/three-tips-to-improve-the-performance-of-your-test-suite/
+
+class ActiveRecord::Base
+  mattr_accessor :shared_connection
+  @@shared_connection = nil
+
+  def self.connection
+    @@shared_connection || retrieve_connection
+  end
+end
+
+# Forces all threads to share the same connection. This works on
+# Capybara because it starts the web server in a thread.
+ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection

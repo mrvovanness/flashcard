@@ -1,4 +1,3 @@
-require "support/login_helper"
 require "rails_helper"
 
 describe "User" do
