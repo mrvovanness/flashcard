@@ -33,14 +33,14 @@ $(document).ready(function() {
     }, "json");
   });
 
-  setTimeout(function() {hideAlert() }, 4500);
+  setTimeout(function() { hideAlert() }, 4500);
   function hideAlert() {
     $(" #flash_wrapper *").fadeOut("slow", function() {
       $(this).remove();
     });
   }
 
-  setInterval(function() {myTimer() }, 1000);
+  setInterval(function() { myTimer() }, 1000);
   var seconds = 0;
   function myTimer() {
     $("#timer").val(seconds);
@@ -49,6 +49,6 @@ $(document).ready(function() {
 
   $(document).on("ajaxComplete", function() {
     seconds = 0;
-    setTimeout(function() {hideAlert() }, 5000);
+    setTimeout(function() { hideAlert() }, 5000);
   });
 });

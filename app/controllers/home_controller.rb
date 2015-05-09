@@ -24,7 +24,7 @@ class HomeController < ApplicationController
                                       typed_word: check_params[:user_translation])
       else
         @response_alert[:danger] = t('card.check_error',
-                                      right_card: card.original_text)
+                                     right_card: card.original_text)
       end
       format.json
     end
@@ -33,8 +33,7 @@ class HomeController < ApplicationController
   private
 
   def check_params
-    params.require(
-      :check_data).permit(
-        :card_id, :user_translation, :response_time)
+    params.require( :check_data).permit(
+      :card_id, :user_translation, :response_time)
   end
 end
