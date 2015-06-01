@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  root 'home#index'
-  post 'check' => 'home#check_card'
-  get 'index' => 'home#index'
+
+  namespace :dashboard do
+    root 'home#index'
+    post 'check' => 'home#check_card'
+    get 'index' => 'home#index'
+  end
 
   resources :cards, :decks
   resources :user_sessions, only: [:new, :create, :destroy]
