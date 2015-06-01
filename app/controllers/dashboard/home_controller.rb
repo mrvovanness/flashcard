@@ -1,4 +1,4 @@
-class HomeController < ApplicationController
+class Dashboard::HomeController < ApplicationController
   def index
     if current_user.current_deck.present?
       @card = current_user.current_deck.cards.pending.first

@@ -50,8 +50,7 @@ class CardsController < ApplicationController
   def card_params
     parameters = params.require(:card).permit(
       :original_text, :translated_text, :picture, :picture_cache,
-      :remote_picture_url, :remove_picture, :deck_id
-    )
+      :remote_picture_url, :remove_picture, :deck_id)
     if params[:new_deck_name].present?
       new_deck = current_user.decks.create(name: params[:new_deck_name])
       parameters.merge!(deck_id: new_deck.id)
